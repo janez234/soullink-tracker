@@ -33,7 +33,28 @@
     button, input, select, textarea { font: inherit; }
     button { color: inherit; cursor: pointer; }
     .app { width: min(1280px, calc(100% - 48px)); margin: 0 auto; }
-    .topline { height: 60px; display: flex; align-items: center; gap: 24px; border-bottom: 1px solid #eee; }
+    .topline { position: sticky; top: 0; z-index: 10; height: 60px; display: flex; align-items: center; gap: 24px; border-bottom: 1px solid #eee; background: var(--bg); }
+    .pin-status { display: none; align-items: center; gap: 7px; margin-left: auto; color: var(--muted); font-size: 11px; white-space: nowrap; }
+    .topline.pinned .pin-status { display: flex; }
+    .topline.pinned .sync-state { margin-left: 8px; }
+    .pin-status strong { color: var(--text); font-size: 13px; }
+    .pin-progress { width: 56px; height: 4px; overflow: hidden; border-radius: 2px; background: var(--line); }
+    .pin-progress i { display: block; height: 100%; background: var(--lime); }
+    .team-power-toggle { width: 100%; padding: 0; border: 0; background: none; color: var(--text); text-align: left; }
+    .team-power.collapsed { padding: 9px 14px; }
+    .team-power.collapsed .team-power-head { margin-bottom: 0; }
+    .team-mini { position: absolute; top: 100%; right: 0; left: 0; display: none; align-items: center; justify-content: space-between; gap: 16px; padding: 4px 0; border-bottom: 1px solid var(--line); background: var(--bg); box-shadow: 0 8px 10px -8px #0005; }
+    .topline.pinned .team-mini { display: flex; }
+    .team-mini-teams { min-width: 0; display: flex; align-items: center; gap: 10px; }
+    .team-mini-group { min-width: 0; display: flex; align-items: flex-start; gap: 3px; }
+    .team-mini-name { max-width: 70px; overflow: hidden; align-self: center; margin-right: 4px; color: var(--muted); font-size: 11px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+    .team-mini-slot { width: 46px; min-width: 0; display: grid; justify-items: center; }
+    .team-mini-slot img { width: 36px; height: 36px; object-fit: contain; image-rendering: pixelated; }
+    .team-mini-slot.vacant::before { content: ""; width: 34px; height: 34px; border: 1px dashed var(--line); border-radius: 5px; }
+    .team-mini-slot small { max-width: 100%; overflow: hidden; color: var(--lime); font-size: 9px; font-weight: 650; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
+    .team-mini-link { color: var(--muted); font-size: 12px; }
+    .team-mini-tabs { min-height: 36px; flex: none; gap: 2px; }
+    .team-mini-tabs .tab { min-width: 0; height: 36px; padding: 0 8px; font-size: 12px; }
     .brand { display: flex; align-items: center; gap: 10px; min-width: 205px; }
     .brand-mark { width: 27px; height: 27px; display: grid; place-items: center; border: 2px solid #777; border-radius: 50%; color: #777; font-size: 12px; font-weight: 750; }
     .brand h1 { margin: 0; font-size: 15px; font-weight: 500; }
@@ -330,6 +351,57 @@
     .boss-done.active { border-color: #b7cba8; background: #f6faf3; color: #55783b; }
     .pair.completed .boss-portrait { background: #f4f7f1; }
     .pair.completed .boss-info { opacity: .65; }
+    .type-check-fab { position: fixed; right: 16px; bottom: 16px; z-index: 2; height: 40px; padding: 0 15px; border: 1px solid var(--line); border-radius: 20px; background: var(--panel); color: var(--text); box-shadow: 0 4px 16px #0003; font-size: 13px; font-weight: 650; }
+    .type-check-fab:hover { border-color: var(--lime); }
+    .type-check-dialog { width: min(560px, calc(100% - 24px)); margin-top: 5vh; }
+    .type-check-ranking { margin-bottom: 10px; }
+    .type-check-ranking h3 { margin: 0 0 6px; font-size: 13px; }
+    .type-check-teams { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .type-check-team { min-width: 0; display: grid; align-content: start; gap: 3px; }
+    .type-check-team > span { color: var(--muted); font-size: 11px; font-weight: 650; }
+    .tc-mon { --tc: #9a9f9a; min-width: 0; display: flex; align-items: center; gap: 5px; padding: 1px 6px 1px 3px; border-left: 4px solid var(--tc); border-radius: 5px; background: color-mix(in srgb, var(--tc) 16%, transparent); }
+    .tc-mon img { width: 34px; height: 34px; flex: none; object-fit: contain; image-rendering: pixelated; }
+    .tc-mon div { min-width: 0; }
+    .tc-mon strong, .tc-mon small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .tc-mon strong { font-size: 13px; }
+    .tc-mon small { color: var(--muted); font-size: 10px; }
+    .tc-best { --tc: #1fa84a; }
+    .tc-good { --tc: #84c23a; }
+    .tc-risky { --tc: #e8963a; }
+    .tc-bad { --tc: #dc3f38; }
+    .grave-summary { margin: 4px 0 12px; color: var(--muted); font-size: 13px; }
+    .grave-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(390px, 100%), 1fr)); gap: 10px; }
+    .grave-card { padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); }
+    .grave-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+    .grave-head strong { font-size: 14px; }
+    .grave-revive { padding: 2px 8px; border: 1px solid var(--line); border-radius: 6px; background: none; color: var(--muted); font-size: 11px; }
+    .grave-revive:hover { border-color: var(--lime); color: var(--text); }
+    .grave-mons { display: grid; grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr); align-items: center; gap: 6px; }
+    .grave-link { color: var(--muted); font-size: 12px; text-align: center; }
+    .grave-mon { min-width: 0; display: flex; align-items: center; gap: 6px; }
+    .grave-mon img { width: 56px; height: 56px; flex: none; object-fit: contain; image-rendering: pixelated; filter: grayscale(.8); }
+    .grave-mon div { min-width: 0; }
+    .grave-mon strong, .grave-mon small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .grave-mon strong { font-size: 15px; }
+    .grave-mon small { color: var(--muted); font-size: 11px; }
+    .grave-note { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+    .type-check-dialog .dialog-inner { padding: 18px; }
+    .type-check-dialog .dialog-head { margin-bottom: 12px; }
+    .type-check-results { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+    .type-check-chip { padding: 3px 9px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); color: var(--text); font-size: 12px; }
+    .type-check-chip.active { border-color: var(--lime); color: var(--lime); font-weight: 650; }
+    .type-check-card { min-height: 190px; margin-top: 10px; }
+    .type-check-note { margin: 14px 0; color: var(--muted); font-size: 13px; }
+    .type-check-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .type-check-head img { width: 84px; height: 84px; object-fit: contain; image-rendering: pixelated; }
+    .type-check-head strong { font-size: 20px; }
+    .type-check-head small { margin-left: 6px; color: var(--muted); font-size: 12px; }
+    .type-check-types { display: flex; gap: 4px; margin-top: 5px; }
+    .type-check-card .type-badge { padding: 3px 8px; font-size: 12px; }
+    .type-check-row { display: grid; grid-template-columns: 124px minmax(0, 1fr); gap: 8px; padding: 6px 0; border-top: 1px solid var(--line); }
+    .type-check-row > span { color: var(--muted); font-size: 12px; font-weight: 650; }
+    .type-check-row.weak > span { color: #d9483f; }
+    .type-check-row > div { display: flex; flex-wrap: wrap; gap: 4px; }
     .pokemon-dialog { width: min(660px, calc(100% - 24px)); }
     .pokemon-dialog .dialog-inner { padding: 18px; }
     .pokemon-search { width: 100%; height: 42px; padding: 0 12px; border: 1px solid #ddd; border-radius: 7px; outline: 0; color: #333; }
@@ -458,8 +530,19 @@
     :root[data-theme="dark"] .status-select.status-caught { color: #a9cf8f; }
     :root[data-theme="dark"] .status-select.status-missed { color: #dcbf6e; }
     :root[data-theme="dark"] :is(.status-select.status-dead, .box-error, .dex-status) { color: #e58a85; }
+    @media (max-width: 1080px) { .team-mini-tabs { display: none; } }
     @media (max-width: 720px) {
-      .topline { height: auto; min-height: 58px; flex-wrap: wrap; gap: 4px 12px; padding-top: 8px; }
+      .topline { top: calc(-1 * var(--topline-hide, 0px)); height: auto; min-height: 58px; flex-wrap: wrap; gap: 4px 12px; padding-top: 8px; }
+      .primary-nav { order: 9; }
+      .pin-status { order: 10; }
+      .pin-status-opponent, .pin-progress { display: none; }
+      .topline.pinned .sync-state { margin: -4px 0 4px; }
+      .team-mini-teams { width: 100%; gap: 5px; }
+      .team-mini-group { flex: 1; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 2px; }
+      .team-mini-name, .team-mini-slot small, .team-mini-tabs { display: none; }
+      .team-mini-slot { width: auto; justify-items: stretch; }
+      .team-mini-slot img { width: 100%; max-width: 32px; height: auto; aspect-ratio: 1; justify-self: center; }
+      .team-mini-slot.vacant::before { width: 100%; max-width: 28px; height: auto; aspect-ratio: 1; box-sizing: border-box; justify-self: center; }
       .brand { min-width: 0; flex: 1; }
       .team-overview { grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr); gap: 6px; padding: 10px 0; }
       .team-slots, .team-evos { gap: 3px; }
@@ -564,7 +647,18 @@
       </nav>
       <button class="text-button" id="themeToggle" type="button" aria-pressed="false" title="Darstellung umschalten">◐ Theme</button>
       <button class="text-button" id="openSync" type="button">Sync</button>
+      <div class="pin-status" id="pinStatus"></div>
       <span class="sync-state" id="syncState" aria-live="polite">Nur auf diesem Gerät</span>
+      <div class="team-mini" id="teamMini">
+        <div class="team-mini-teams" id="teamMiniTeams"></div>
+        <nav class="tabs section-tabs team-mini-tabs" id="teamMiniTabs" aria-label="Nuzlocke-Ansicht (angeheftet)">
+          <button class="tab" data-section="nuzlocke">Nuzlocke</button>
+          <button class="tab" data-section="map">Karte</button>
+          <button class="tab" data-section="routes">Routen</button>
+          <button class="tab" data-section="bosses">Trainerkämpfe</button>
+          <button class="tab" data-section="upcoming">Bevorstehend</button>
+        </nav>
+      </div>
     </header>
 
     <section class="team-overview" id="teamOverview" aria-label="Gekoppelte Teams"></section>
@@ -646,6 +740,20 @@
         <button class="primary" type="submit">Begegnung speichern</button>
       </div>
     </form>
+  </dialog>
+
+  <button class="type-check-fab" id="openTypeCheck" type="button" title="Typen und Schwächen eines Pokémon nachschlagen">Typ-Check</button>
+
+  <dialog id="typeCheckDialog" class="type-check-dialog">
+    <div class="dialog-inner">
+      <div class="dialog-head">
+        <div><h2>Typ-Check</h2></div>
+        <button class="close" type="button" id="closeTypeCheck" aria-label="Schließen">×</button>
+      </div>
+      <input id="typeCheckSearch" class="pokemon-search" type="search" placeholder="Gegner-Pokémon eingeben…" autocomplete="off" aria-label="Pokémon nachschlagen">
+      <div id="typeCheckResults" class="type-check-results"></div>
+      <div id="typeCheckCard" class="type-check-card" aria-live="polite"></div>
+    </div>
   </dialog>
 
   <dialog id="pokemonDialog" class="pokemon-dialog">
@@ -942,7 +1050,8 @@
         boxShowStats: true,
         boxTypeFilter: "",
         boxSort: "route",
-        boxCompareOpen: false
+        boxCompareOpen: false,
+        boxPowerOpen: false
       };
       let state = loadState();
       let toastTimer;
@@ -961,6 +1070,8 @@
       const evolutionChains = new Map();
       const evolutionChainPromises = new Map();
       let teamEvolutionIds = new Set();
+      let boxEvolutionIds = new Set();
+      let deadEvolutionIds = new Set();
       let teamEvolutionReady = false;
       let teamAdditionPending = false;
       let teamPowerLoadPending = false;
@@ -1101,6 +1212,7 @@
         next.boxScope = ["box", "team", "all"].includes(value.boxScope) ? value.boxScope : "box";
         next.boxShowStats = value.boxShowStats !== false;
         next.boxCompareOpen = value.boxCompareOpen === true;
+        next.boxPowerOpen = value.boxPowerOpen === true;
         next.boxTypeFilter = pokemonTypes.includes(value.boxTypeFilter) ? value.boxTypeFilter : "";
         next.boxSort = ["route", "total", "hp", "attack", "defense", "special-attack", "special-defense", "speed"].includes(value.boxSort) ? value.boxSort : "route";
         for (const rawPair of value.pairs) {
@@ -1574,9 +1686,14 @@
           const total = getBaseStatTotal(mon);
           return sum === null || total === null ? null : sum + total;
         }, 0));
+        const open = state.boxPowerOpen;
+        const panel = (summary, body) => `<section class="team-power${open ? "" : " collapsed"}">
+          <button type="button" class="team-power-head team-power-toggle" data-action="toggle-team-power" aria-expanded="${open}"><strong><span aria-hidden="true">${open ? "▾" : "▸"}</span> Team-Basiswerte</strong><span>${summary}</span></button>
+          ${open ? body : ""}
+        </section>`;
         if (totals.some((total) => total === null)) {
           requestTeamPowerDetails(teams);
-          return `<section class="team-power"><div class="team-power-head"><strong>Team-Basiswerte</strong><span>Nur aktive Team-Pokémon werden gezählt.</span></div><p class="team-power-note">Basiswerte werden geladen …</p></section>`;
+          return panel("Basiswerte werden geladen …", `<p class="team-power-note">Basiswerte werden geladen …</p>`);
         }
         const difference = Math.abs(totals[0] - totals[1]);
         const leader = totals[0] === totals[1] ? null : totals[0] > totals[1] ? 0 : 1;
@@ -1600,12 +1717,11 @@
           const gap = (row) => Number((row.match(/Δ ([\d.]+)/)?.[1] || "0").replace(".", ""));
           return gap(b) - gap(a);
         });
-        return `<section class="team-power">
-          <div class="team-power-head"><strong>Team-Basiswerte</strong><span>Nur aktive Team-Pokémon werden gezählt.</span></div>
+        const summary = open ? "Nur aktive Team-Pokémon werden gezählt." : teams.map((members, player) => `${escapeHTML(state.players[player])} ${formatBaseStatTotal(totals[player])}`).join(" · ");
+        return panel(summary, `
           <div class="team-power-totals">${teams.map((members, player) => `<div class="team-power-total"><strong>${escapeHTML(state.players[player])}</strong><span>${formatBaseStatTotal(totals[player])}</span><small>Ø ${formatBaseStatTotal(Math.round(totals[player] / members.length))} · ${members.length} Pokémon</small></div>`).join("")}</div>
           <div class="team-difference${difference < 75 ? " is-even" : ""}">Differenz: ${formatBaseStatTotal(difference)} · ${differenceLabel}</div>
-          <div class="pair-comparison"><h3>Paar-Vergleich</h3><div class="pair-comparison-list">${pairRows.join("")}</div></div>
-        </section>`;
+          <div class="pair-comparison"><h3>Paar-Vergleich</h3><div class="pair-comparison-list">${pairRows.join("")}</div></div>`);
       }
 
       function nextCap() {
@@ -1637,6 +1753,21 @@
             }).join("")}</div>
             ${renderTeamEvolutions(teamPairs, player)}
           </div>`).join(`<div class="team-connection" aria-label="Soullink-Verbindung"><strong>↔</strong>Soullink</div>`) + (state.view === "team" ? renderTeamPower(teams) : "");
+        renderTeamMini(teamPairs);
+      }
+
+      function renderTeamMini(teamPairs) {
+        $("#teamMiniTeams").innerHTML = [0, 1].map((player) => `<div class="team-mini-group" aria-label="${escapeHTML(`Team von ${state.players[player]}`)}">
+          <span class="team-mini-name">${escapeHTML(state.players[player])}</span>
+          ${Array.from({ length: 6 }, (_, index) => {
+            const mon = teamPairs[index]?.mons[player];
+            if (mon?.status !== "caught" || !mon.team) return `<div class="team-mini-slot vacant"></div>`;
+            const name = getPokemonName(mon);
+            const hint = evolutionHint(mon);
+            const sprite = spriteUrl(mon.speciesId);
+            return `<div class="team-mini-slot" title="${escapeHTML(hint ? `${name} → ${hint.title}` : name)}">${sprite ? `<img src="${sprite}" alt="${escapeHTML(name)}">` : `<span>${escapeHTML(name.slice(0, 2))}</span>`}${hint ? `<small${hint.later ? ` class="evo-later"` : ""}>${escapeHTML(hint.text)}</small>` : ""}</div>`;
+          }).join("")}
+        </div>`).join(`<span class="team-mini-link" aria-hidden="true">↔</span>`);
       }
 
       async function toggleTeamMember(pair, index) {
@@ -1718,10 +1849,7 @@
         render();
       }
 
-      function renderRunProgress() {
-        const element = $("#runProgress");
-        element.hidden = state.view !== "routes";
-        if (element.hidden) return;
+      function runProgressCounts() {
         const routes = state.pairs.filter((pair) => pair.category === "route");
         const trainers = state.pairs.filter((pair) => pair.category === "boss");
         // Eine Begegnung zählt erst, wenn beide Spieler sie abgeschlossen haben.
@@ -1730,6 +1858,14 @@
         const total = routes.length + trainers.length;
         // Abgerundet, damit 100 % wirklich erst am Ende erscheint.
         const percent = total ? Math.floor((finishedRoutes + finishedTrainers) / total * 100) : 0;
+        return { routes, trainers, finishedRoutes, finishedTrainers, percent };
+      }
+
+      function renderRunProgress() {
+        const element = $("#runProgress");
+        element.hidden = state.view !== "routes";
+        if (element.hidden) return;
+        const { routes, trainers, finishedRoutes, finishedTrainers, percent } = runProgressCounts();
         element.innerHTML = `<div class="run-progress-head"><strong>Fortschritt</strong><span>${percent} %</span></div>
           <div class="run-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}" aria-label="Run-Fortschritt"><i style="width:${percent}%"></i></div>
           <div class="run-progress-counts"><span>Trainer ${finishedTrainers}/${trainers.length}</span><span>Begegnungen ${finishedRoutes}/${routes.length}</span></div>`;
@@ -1742,6 +1878,7 @@
         document.querySelectorAll(".primary-nav .tab").forEach((tab) => tab.classList.toggle("active", tab.dataset.view === state.view));
         document.querySelectorAll(".section-tabs .tab").forEach((tab) => tab.classList.toggle("active", tab.dataset.section === state.section));
         $("#sectionTabs").hidden = state.view !== "routes";
+        $("#teamMiniTabs").hidden = state.view !== "routes";
         $("#toolbar").hidden = state.view === "routes" && state.section === "map";
         $("#playerHead").hidden = state.view !== "routes" || state.section === "map";
         const currentPair = state.pairs.find((pair) => pair.category === "route" && pair.location === state.currentLocation);
@@ -1751,6 +1888,8 @@
         $("#levelCapBar").innerHTML = cap
           ? `<span>Aktuelle Levelgrenze</span><strong class="cap-value">Lv. ${cap.levelCap}</strong><span>vor ${escapeHTML(displayOpponent(cap.opponent))}</span>`
           : `<span>Levelgrenze</span><strong class="cap-value">Abgeschlossen</strong>`;
+        const { percent } = runProgressCounts();
+        $("#pinStatus").innerHTML = `${cap ? `<strong title="Aktuelle Levelgrenze">Lv. ${cap.levelCap}</strong><span class="pin-status-opponent">vor ${escapeHTML(displayOpponent(cap.opponent))}</span>` : ""}<span class="pin-progress" aria-hidden="true"><i style="width:${percent}%"></i></span><span title="Run-Fortschritt">${percent} %</span>`;
         renderTeamOverview();
       }
 
@@ -1945,6 +2084,21 @@
         </article>`;
       }
 
+      function renderGraveyard(pairs) {
+        const statusText = { dead: "Gefallen", missed: "Verpasst", none: "Keine Begegnung", caught: "Lebt" };
+        const fallen = pairs.flatMap((pair) => pair.mons).filter((mon) => mon.status === "dead").length;
+        const graveMon = (mon, player) => `<div class="grave-mon">
+          ${mon.species ? `<img src="${spriteUrl(getPokemonId(mon))}" alt="" loading="lazy">` : ""}
+          <div><strong>${mon.species ? escapeHTML(getPokemonName(mon)) : "—"}</strong><small>${escapeHTML(state.players[player])} · ${statusText[mon.status]}</small></div>
+        </div>`;
+        return `<p class="grave-summary">${pairs.length} ${pairs.length === 1 ? "Soullink" : "Soullinks"} verloren · ${fallen} gefallene Pokémon</p>
+          <div class="grave-grid">${pairs.map((pair) => `<article class="grave-card" data-pair-id="${escapeHTML(pair.id)}">
+            <div class="grave-head"><strong>† ${escapeHTML(displayLocation(pair.location))}</strong><button type="button" class="grave-revive" data-action="revive" data-id="${escapeHTML(pair.id)}">Wiederbeleben</button></div>
+            <div class="grave-mons">${graveMon(pair.mons[0], 0)}<span class="grave-link" aria-hidden="true">↔</span>${graveMon(pair.mons[1], 1)}</div>
+            ${pair.note ? `<p class="grave-note">${escapeHTML(pair.note)}</p>` : ""}
+          </article>`).join("")}</div>`;
+      }
+
       function renderPairs() {
         if (state.view === "team") {
           renderBox();
@@ -1972,6 +2126,10 @@
         if (!pairs.length) {
           const message = state.view === "grave" ? "Der Friedhof ist leer." : state.view === "team" ? "Die Box ist leer." : state.section === "bosses" ? "Keine Trainerkämpfe gefunden." : "Keine Einträge gefunden.";
           $("#content").innerHTML = `<div class="empty"><strong>${message}</strong>Ändere die Suche oder trage Pokémon ein.</div>`;
+          return;
+        }
+        if (state.view === "grave") {
+          $("#content").innerHTML = renderGraveyard(pairs);
           return;
         }
         $("#content").innerHTML = pairs.map((pair) => {
@@ -2271,6 +2429,101 @@
           : "<div></div>").join("")}</div>`;
       }
 
+      let typeCheckToken = 0;
+      let typeCheckTimer = null;
+
+      function typeCheckMatches(query) {
+        const needle = query.toLocaleLowerCase("de").replace(/^#/, "");
+        const rank = (pokemon) => Number(needle) === pokemon.id ? 0 : pokemon.name.toLocaleLowerCase("de").startsWith(needle) ? 1 : 2;
+        return pokemonDex.filter((pokemon) => pokemon.id <= POKEMON_Y_MAX_ID && (
+          pokemon.name.toLocaleLowerCase("de").includes(needle) ||
+          pokemon.englishName.toLocaleLowerCase("de").includes(needle) ||
+          String(pokemon.id).padStart(4, "0").includes(needle)
+        )).sort((a, b) => rank(a) - rank(b)).slice(0, 8);
+      }
+
+      function renderTypeCheckCard(pokemon, types) {
+        const groups = [[4, "Sehr schwach", "4×"], [2, "Schwach", "2×"], [.5, "Resistent", "½×"], [.25, "Sehr resistent", "¼×"], [0, "Immun", "0×"]];
+        return `<div class="type-check-head"><img src="${spriteUrl(pokemon.id)}" alt="">
+          <div><strong>${escapeHTML(pokemon.name)}</strong><small>#${String(pokemon.id).padStart(3, "0")}</small><div class="type-check-types">${types.map((type) => typeBadge(type)).join("")}</div></div>
+        </div><div id="typeCheckRanking"></div>${groups.map(([value, label, multiplier]) => {
+          const attackers = pokemonTypes.filter((type) => effectiveness(types, type) === value);
+          return attackers.length ? `<div class="type-check-row${value > 1 ? " weak" : ""}"><span>${label} · ${multiplier}</span><div>${attackers.map((type) => typeBadge(type)).join("")}</div></div>` : "";
+        }).join("")}`;
+      }
+
+      // Schätzung nach Typen: eigene Typen als Angriff gegen den Gegner, Gegner-Typen als Angriff gegen das eigene Pokémon.
+      function typeCheckMatchup(ownTypes, enemyTypes) {
+        const deals = Math.max(...ownTypes.map((type) => effectiveness(enemyTypes, type)));
+        const takes = Math.max(...enemyTypes.map((type) => effectiveness(ownTypes, type)));
+        const steps = (multiplier) => multiplier === 0 ? -2 : Math.log2(multiplier);
+        return { deals, takes, score: steps(deals) - steps(takes) };
+      }
+
+      function renderTypeCheckRanking(teams, enemyTypes) {
+        if (!teams.flat().length) return "";
+        const multiplierText = { 0: "0×", 0.25: "¼×", 0.5: "½×", 1: "1×", 2: "2×", 4: "4×" };
+        const rankClass = (score) => score >= 2 ? "tc-best" : score === 1 ? "tc-good" : score === 0 ? "" : score === -1 ? "tc-risky" : "tc-bad";
+        const column = (members, player) => {
+          const rows = members.flatMap(({ mon }) => {
+            const types = pokemonDetails.get(getPokemonId(mon))?.types;
+            return types ? [{ mon, ...typeCheckMatchup(types, enemyTypes) }] : [];
+          }).sort((a, b) => b.score - a.score || b.deals - a.deals);
+          return `<div class="type-check-team"><span>${escapeHTML(state.players[player])}</span>${rows.length ? rows.map(({ mon, deals, takes, score }) => `<div class="tc-mon ${rankClass(score)}"><img src="${spriteUrl(getPokemonId(mon))}" alt=""><div><strong>${escapeHTML(getPokemonName(mon))}</strong><small>Trifft ${multiplierText[deals]} · nimmt ${multiplierText[takes]}</small></div></div>`).join("") : `<p class="type-check-note">Niemand im Team.</p>`}</div>`;
+        };
+        return `<section class="type-check-ranking"><h3>Beste Wahl aus eurem Team</h3><div class="type-check-teams">${teams.map(column).join("")}</div></section>`;
+      }
+
+      async function showTypeCheck(pokemon) {
+        const token = ++typeCheckToken;
+        const card = $("#typeCheckCard");
+        document.querySelectorAll(".type-check-chip").forEach((chip) => chip.classList.toggle("active", Number(chip.dataset.typeCheckId) === pokemon.id));
+        if (!pokemonDetails.has(pokemon.id)) card.innerHTML = `<p class="type-check-note">Typen werden geladen…</p>`;
+        try {
+          const details = await loadPokemonDetails(pokemon.id);
+          if (token !== typeCheckToken) return;
+          card.innerHTML = renderTypeCheckCard(pokemon, details.types);
+          const teams = [0, 1].map(getTeamMons);
+          await Promise.all(teams.flat().map(({ mon }) => getPokemonId(mon)).filter(Number.isInteger).map(loadPokemonDetails));
+          if (token === typeCheckToken) $("#typeCheckRanking").innerHTML = renderTypeCheckRanking(teams, details.types);
+        } catch (error) {
+          console.error("Typ-Check konnte nicht geladen werden:", error);
+          if (token === typeCheckToken) card.innerHTML = `<p class="type-check-note">Typen konnten nicht geladen werden. Bitte versuche es erneut.</p>`;
+        }
+      }
+
+      function updateTypeCheck() {
+        clearTimeout(typeCheckTimer);
+        const query = $("#typeCheckSearch").value.trim();
+        const matches = query && pokemonDex.length ? typeCheckMatches(query) : [];
+        $("#typeCheckResults").innerHTML = matches.length > 1
+          ? matches.map((pokemon) => `<button type="button" class="type-check-chip" data-type-check-id="${pokemon.id}">${escapeHTML(pokemon.name)}</button>`).join("")
+          : "";
+        if (!matches.length) {
+          typeCheckToken += 1;
+          $("#typeCheckCard").innerHTML = query && pokemonDex.length ? `<p class="type-check-note">Kein Pokémon gefunden.</p>` : "";
+          return;
+        }
+        typeCheckTimer = setTimeout(() => showTypeCheck(matches[0]), 150);
+      }
+
+      async function openTypeCheck() {
+        $("#typeCheckSearch").value = "";
+        updateTypeCheck();
+        $("#typeCheckDialog").showModal();
+        $("#typeCheckSearch").focus();
+        if (pokemonDex.length) return;
+        $("#typeCheckCard").innerHTML = `<p class="type-check-note">Pokédex wird geladen…</p>`;
+        try {
+          await loadPokemonDex();
+          $("#typeCheckCard").innerHTML = "";
+          updateTypeCheck();
+        } catch (error) {
+          console.error("Pokédex konnte für den Typ-Check nicht geladen werden:", error);
+          $("#typeCheckCard").innerHTML = `<p class="type-check-note">Pokédex nicht erreichbar. Bitte versuche es erneut.</p>`;
+        }
+      }
+
       async function openEvolutionDialog(pairId, index) {
         try {
           await loadPokemonDex();
@@ -2345,11 +2598,16 @@
       async function loadTeamEvolutionIds(editedPairId) {
         await loadPokemonDex();
         // Das gerade bearbeitete Paar zählt nicht mit, sonst könnte es sich nicht entwickeln.
-        const teamIds = [...new Set(state.pairs.flatMap((pair) => pair.category === "route" && pair.id !== editedPairId
-          ? pair.mons.filter((mon) => mon.status === "caught" && mon.team).map(getPokemonId)
-          : []).filter(Number.isInteger))];
-        const families = await Promise.all(teamIds.map(loadEvolutionFamily));
-        teamEvolutionIds = new Set(families.flatMap((family) => [...family]));
+        const caught = state.pairs.flatMap((pair) => pair.category === "route" && pair.id !== editedPairId
+          ? pair.mons.filter((mon) => mon.status === "caught")
+          : []);
+        const familyIds = async (mons) => {
+          const ids = [...new Set(mons.map(getPokemonId).filter(Number.isInteger))];
+          const families = await Promise.all(ids.map(loadEvolutionFamily));
+          return new Set(families.flatMap((family) => [...family]));
+        };
+        const dead = state.pairs.flatMap((pair) => pair.category === "route" ? pair.mons.filter((mon) => mon.status === "dead") : []);
+        [teamEvolutionIds, boxEvolutionIds, deadEvolutionIds] = await Promise.all([familyIds(caught.filter((mon) => mon.team)), familyIds(caught.filter((mon) => !mon.team)), familyIds(dead)]);
         return teamEvolutionIds;
       }
 
@@ -2667,11 +2925,13 @@
           ? `Deutsche Pokémon-Namen konnten nicht geladen werden. ${pokemonNamesError.message}`
           : query ? `${found.length}${found.length === 60 ? "+" : ""} Treffer` : `${pokemonDex.length} Pokémon · Namen oder Pokédex-Nummer suchen`;
         $("#pokemonResults").innerHTML = found.length ? found.map((pokemon) => {
-          const dead = deadPokemonIds.has(pokemon.id);
+          const deadItself = deadPokemonIds.has(pokemon.id);
+          const dead = deadItself || deadEvolutionIds.has(pokemon.id);
           const inTeam = teamEvolutionIds.has(pokemon.id);
-          const unavailable = dead || inTeam;
-          const reason = dead ? "Bereits tot" : "Im Team";
-          const label = dead ? `${pokemon.name} ist in diesem Run bereits tot` : `${pokemon.name} ist mit einem Team-Pokémon verwandt und nicht verfügbar`;
+          const inBox = boxEvolutionIds.has(pokemon.id);
+          const unavailable = dead || inTeam || inBox;
+          const reason = deadItself ? "Bereits tot" : dead ? "Familie tot" : inTeam ? "Im Team" : "In der Box";
+          const label = deadItself ? `${pokemon.name} ist in diesem Run bereits tot` : `${pokemon.name} ist mit einem Pokémon ${dead ? "auf dem Friedhof" : inTeam ? "im Team" : "in der Box"} verwandt und nicht verfügbar`;
           return `<button type="button" class="pokemon-result${unavailable ? " unavailable" : ""}" role="option" data-action="choose-pokemon" data-pokemon-id="${pokemon.id}"${unavailable ? ` disabled aria-label="${escapeHTML(label)}"` : ""}>
             <img src="${spriteUrl(pokemon.id)}" alt="" loading="lazy">${renderSpeciesText(pokemon.name, evolutionHint({ speciesId: pokemon.id, species: pokemon.name }))}${unavailable ? `<small class="unavailable-label">${reason}</small>` : ""}<small>#${String(pokemon.id).padStart(3, "0")}</small>
           </button>`;
@@ -2726,6 +2986,23 @@
       $("#closePokemonDialog").addEventListener("click", () => $("#pokemonDialog").close());
       $("#pokemonDialog").addEventListener("click", (event) => {
         if (event.target === $("#pokemonDialog")) $("#pokemonDialog").close();
+      });
+      $("#openTypeCheck").addEventListener("click", openTypeCheck);
+      $("#closeTypeCheck").addEventListener("click", () => $("#typeCheckDialog").close());
+      $("#typeCheckDialog").addEventListener("click", (event) => {
+        if (event.target === $("#typeCheckDialog")) $("#typeCheckDialog").close();
+      });
+      $("#typeCheckSearch").addEventListener("input", updateTypeCheck);
+      // So ersetzt der nächste Name direkt den vorherigen.
+      $("#typeCheckSearch").addEventListener("focus", () => $("#typeCheckSearch").select());
+      $("#typeCheckSearch").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") $("#typeCheckSearch").select();
+      });
+      $("#typeCheckResults").addEventListener("click", (event) => {
+        const pokemon = pokemonById.get(Number(event.target.closest("[data-type-check-id]")?.dataset.typeCheckId));
+        if (!pokemon) return;
+        clearTimeout(typeCheckTimer);
+        showTypeCheck(pokemon);
       });
       $("#closeEvolutionDialog").addEventListener("click", () => $("#evolutionDialog").close());
       $("#evolutionDialog").addEventListener("click", (event) => {
@@ -2928,17 +3205,35 @@
         showToast(editId ? "Eintrag aktualisiert." : "Eintrag angelegt.");
       });
 
+      // Wer aus der angehefteten Leiste den Bereich wechselt, soll oben im neuen Bereich landen.
+      function scrollToTopIfPinned() {
+        if ($(".topline").classList.contains("pinned")) window.scrollTo(0, 0);
+      }
+
+      function setupPinnedHeader() {
+        const header = $(".topline");
+        // Am Handy bleibt beim Anheften nur die Navigationszeile sichtbar.
+        const measure = () => header.style.setProperty("--topline-hide", `${$(".primary-nav").offsetTop}px`);
+        measure();
+        addEventListener("resize", measure);
+        if (!globalThis.IntersectionObserver) return;
+        new IntersectionObserver(([entry]) => header.classList.toggle("pinned", !entry.isIntersecting), { rootMargin: "-60px 0px 0px 0px" }).observe($("#teamOverview"));
+      }
+      setupPinnedHeader();
+
       document.querySelectorAll(".primary-nav .tab").forEach((tab) => tab.addEventListener("click", () => {
         state.view = tab.dataset.view;
         $("#search").value = "";
         persist();
         render();
+        scrollToTopIfPinned();
       }));
       document.querySelectorAll(".section-tabs .tab").forEach((tab) => tab.addEventListener("click", () => {
         state.section = tab.dataset.section;
         $("#search").value = "";
         persist();
         render();
+        scrollToTopIfPinned();
       }));
       $("#search").addEventListener("input", renderPairs);
       $("#themeToggle").addEventListener("click", () => {
@@ -2961,12 +3256,12 @@
         const selected = pokemonById.get(Number(button.dataset.pokemonId));
         const target = activePicker && state.pairs.find((item) => item.id === activePicker.pairId);
         if (!selected || !target || !activePicker) return;
-        if (getDeadPokemonIds().has(selected.id)) {
-          showToast(`${selected.name} kann nicht ausgewählt werden: Es ist in diesem Run bereits tot.`);
+        if (getDeadPokemonIds().has(selected.id) || deadEvolutionIds.has(selected.id)) {
+          showToast(`${selected.name} kann nicht ausgewählt werden: Es oder seine Entwicklungsfamilie ist in diesem Run bereits tot.`);
           return;
         }
-        if (!teamEvolutionReady || teamEvolutionIds.has(selected.id)) {
-          showToast(`${selected.name} oder eine Entwicklungsstufe davon ist bereits in einem Team.`);
+        if (!teamEvolutionReady || teamEvolutionIds.has(selected.id) || boxEvolutionIds.has(selected.id)) {
+          showToast(`${selected.name} oder eine Entwicklungsstufe davon ist bereits gefangen.`);
           return;
         }
         const mon = target.mons[activePicker.index];
@@ -2980,6 +3275,12 @@
       });
 
       $("#teamOverview").addEventListener("click", (event) => {
+        if (event.target.closest("[data-action='toggle-team-power']")) {
+          state.boxPowerOpen = !state.boxPowerOpen;
+          persist();
+          renderTeamOverview();
+          return;
+        }
         const button = event.target.closest("[data-action='team']");
         if (!button) return;
         const pair = state.pairs.find((item) => item.id === button.dataset.id);
@@ -3069,8 +3370,30 @@
             }
             persist();
             render();
-            showToast(`${state.players[index]}s Pokémon aus ${pair.location} entfernt.`);
+            showToast(`${state.players[index]}s Pokémon aus ${displayLocation(pair.location)} entfernt.`);
             return;
+          case "revive":
+            if (!await askForConfirmation({
+              title: "Soullink wiederbeleben?",
+              message: `Die gefallenen Pokémon aus ${displayLocation(pair.location)} kommen zurück in die Box.`,
+              confirmText: "Wiederbeleben"
+            })) return;
+            {
+              // Während des Dialogs kann ein Sync-Update den Run ersetzt haben.
+              const currentPair = state.pairs.find((item) => item.id === pair.id);
+              if (!currentPair) {
+                showToast("Der Eintrag wurde zwischenzeitlich geändert.");
+                return;
+              }
+              currentPair.mons.forEach((member) => {
+                if (member.status === "dead") {
+                  member.status = "caught";
+                  member.team = false;
+                }
+              });
+            }
+            showToast("Soullink wiederbelebt.");
+            break;
           case "edit":
             openDialog(pair);
             return;
