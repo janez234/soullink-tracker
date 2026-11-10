@@ -393,6 +393,68 @@
     .tc-good { --tc: #84c23a; }
     .tc-risky { --tc: #e8963a; }
     .tc-bad { --tc: #dc3f38; }
+    .item-icon { width: 24px; height: 24px; flex: none; display: inline-grid; place-items: center; vertical-align: middle; }
+    .item-icon img { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
+    .item-icon.none::before { content: "◆"; color: var(--muted); font-size: 11px; }
+    .item-icon.large { width: 46px; height: 46px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); }
+    .item-icon.large img { width: 36px; height: 36px; }
+    .item-icon.large.none::before { font-size: 16px; }
+    .item-icon.inline, .species-button .item-icon.inline, .pokemon-result .item-icon.inline { width: 18px; height: 18px; display: inline-grid; overflow: visible; margin: -4px 3px -4px 1px; }
+    .item-summary strong { color: var(--text); }
+    .item-owner-pick, .item-filter { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+    .item-owner-pick > span, .item-filter > span { margin-right: 2px; color: var(--muted); font-size: 12px; }
+    .item-owner-pick { grid-column: 2 / -2; }
+    .item-form .primary { grid-row: 1; grid-column: -2; }
+    .item-filter { margin: 0 0 12px; }
+    .item-owner-tag { padding: 2px 7px; border: 1px solid var(--line); border-radius: 4px; background: none; color: var(--muted); font-size: 11px; font-weight: 650; }
+    .item-owner-tag:hover { border-color: var(--lime); color: var(--text); }
+    .item-owner-tag.player-0 { border-color: #5b8fd6; color: #3d74c0; }
+    .item-owner-tag.player-1 { border-color: #d98a4a; color: #b96a2c; }
+    .item-form { display: grid; grid-template-columns: auto minmax(0, 1.3fr) minmax(0, 1.3fr) 110px auto; align-items: center; gap: 8px; margin: 14px 0 16px; padding: 10px; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); }
+    .item-form input { min-width: 0; height: 42px; padding: 0 12px; border: 1px solid var(--line); border-radius: 7px; outline: 0; background: var(--bg); color: var(--text); font-size: 14px; }
+    .item-form input:focus { border-color: var(--lime); }
+    .item-form .primary { height: 42px; padding: 0 14px; }
+    .item-notes { overflow: visible; }
+    .item-field { position: relative; min-width: 0; }
+    .item-field input { width: 100%; }
+    .item-suggest { position: absolute; top: calc(100% + 5px); right: 0; left: 0; z-index: 6; max-height: 318px; display: grid; gap: 1px; overflow-y: auto; padding: 5px; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); box-shadow: 0 12px 32px #0004; }
+    .item-suggest-option { min-width: 0; min-height: 36px; display: flex; align-items: center; gap: 9px; padding: 3px 8px; border: 0; border-radius: 6px; background: none; color: var(--text); font-size: 14px; text-align: left; }
+    .item-suggest-option:hover, .item-suggest-option.active { background: color-mix(in srgb, var(--lime) 18%, transparent); }
+    .item-suggest-option.active { box-shadow: inset 3px 0 0 var(--lime); }
+    .item-suggest-name { min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .item-suggest-name b { color: var(--lime); }
+    .item-suggest-pin { width: 24px; color: var(--muted); font-size: 11px; text-align: center; }
+    .item-suggest-extra { flex: none; display: flex; align-items: center; gap: 2px; }
+    .item-suggest-extra img { width: 30px; height: 30px; object-fit: contain; image-rendering: pixelated; }
+    .item-suggest-extra .item-icon img { width: 100%; height: 100%; }
+    .item-suggest-extra em { padding: 1px 6px; border-radius: 4px; background: color-mix(in srgb, var(--lime) 22%, transparent); color: var(--text); font-size: 10px; font-style: normal; font-weight: 700; }
+    .item-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 10px; }
+    .item-card { min-width: 0; display: grid; align-content: start; gap: 9px; padding: 11px; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); box-shadow: 0 1px 3px #0000000c; }
+    .item-card.needed { border-color: #9dba8a; box-shadow: inset 3px 0 0 var(--lime), 0 1px 3px #0000000c; }
+    .item-card.bought { opacity: .6; }
+    .item-card.bought .item-main > strong { text-decoration: line-through; }
+    .item-card-head { display: flex; align-items: center; gap: 10px; }
+    .item-main { min-width: 0; flex: 1; display: grid; gap: 4px; }
+    .item-main > strong { overflow: hidden; font-size: 15px; text-overflow: ellipsis; white-space: nowrap; }
+    .item-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+    .item-price { padding: 3px 10px; font-size: 16px; }
+    .item-place { padding: 2px 7px; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); font-size: 11px; font-weight: 650; }
+    .item-place::before { content: "◉ "; font-size: 9px; }
+    .item-needs { display: grid; gap: 4px; }
+    .item-need { min-width: 0; display: flex; align-items: center; gap: 2px; padding: 2px 8px 2px 4px; border-radius: 7px; background: color-mix(in srgb, var(--lime) 13%, transparent); }
+    .item-need img { width: 44px; height: 44px; flex: none; object-fit: contain; image-rendering: pixelated; }
+    .item-need-arrow { color: var(--lime); font-weight: 700; }
+    .item-need div { min-width: 0; margin-left: 6px; }
+    .item-need strong, .item-need small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .item-need strong { font-size: 12px; }
+    .item-need small { color: var(--muted); font-size: 10px; }
+    .item-bought { width: 100%; }
+    .item-subhead { margin: 18px 0 8px; color: var(--muted); font-size: 12px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; }
+    .evo-shop { display: block; color: var(--lime); font-size: 11px; font-weight: 650; }
+    .map-item-badge { position: absolute; top: -11px; right: -11px; z-index: 3; width: 24px; height: 24px; display: grid; place-items: center; border: 2px solid #383d3b; border-radius: 50%; background: #fff; pointer-events: none; }
+    .map-item-badge .item-icon { width: 18px; height: 18px; }
+    .map-item-badge b { position: absolute; right: -6px; bottom: -6px; min-width: 13px; padding: 0 2px; border-radius: 7px; background: #383d3b; color: #fff; font-size: 9px; line-height: 13px; text-align: center; }
+    @media (max-width: 620px) { .item-form { grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr); } .item-form .primary { grid-row: auto; grid-column: 1 / -1; } .item-form #itemPrice { grid-column: 2 / -1; } .item-owner-pick { grid-column: 1 / -1; } }
     .grave-summary { margin: 4px 0 12px; color: var(--muted); font-size: 13px; }
     .grave-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(390px, 100%), 1fr)); gap: 10px; }
     .grave-card { padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); }
@@ -548,7 +610,11 @@
     :root[data-theme="dark"] .boss-pokemon-level { border-color: var(--line); background: var(--panel); color: var(--text); }
     :root[data-theme="dark"] .evolve-button { border-color: #4f7d30; background: #233420; color: #bdd6b4; }
     :root[data-theme="dark"] .evolve-button:hover, :root[data-theme="dark"] .evolution-option:hover, :root[data-theme="dark"] .evolution-option:focus-visible { border-color: #6f9c50; background: #2c4128; }
-    :root[data-theme="dark"] .box-pokemon-origin .box-evolve, :root[data-theme="dark"] .team-evos strong, :root[data-theme="dark"] .box-evo-hint strong, :root[data-theme="dark"] .species-text .species-evo { color: #a9cf8f; }
+    :root[data-theme="dark"] .box-pokemon-origin .box-evolve, :root[data-theme="dark"] .team-evos strong, :root[data-theme="dark"] .box-evo-hint strong, :root[data-theme="dark"] .species-text .species-evo, :root[data-theme="dark"] .evo-shop, :root[data-theme="dark"] .item-need-arrow { color: #a9cf8f; }
+    :root[data-theme="dark"] .item-card.needed { border-color: #4f7d30; }
+    :root[data-theme="dark"] .item-suggest-name b { color: #a9cf8f; }
+    :root[data-theme="dark"] .item-owner-tag.player-0 { color: #8db6ee; }
+    :root[data-theme="dark"] .item-owner-tag.player-1 { color: #eeb07c; }
     :root[data-theme="dark"] :is(.box-scope button.active, .box-type-filter.active) { border-color: #6d786b; background: #2b312b; color: #f1f5ef; }
     :root[data-theme="dark"] :is(.team-toggle.active, .boss-done.active) { border-color: #4f7d30; background: #233420; color: #bdd6b4; }
     :root[data-theme="dark"] .status-select.status-caught { color: #a9cf8f; }
@@ -681,6 +747,7 @@
           <button class="tab" data-section="routes">Routen</button>
           <button class="tab" data-section="bosses">Trainerkämpfe</button>
           <button class="tab" data-section="upcoming">Bevorstehend</button>
+            <button class="tab" data-section="items">Items</button>
         </nav>
       </div>
     </header>
@@ -706,6 +773,7 @@
             <button class="tab" data-section="routes">Routen</button>
             <button class="tab" data-section="bosses">Trainerkämpfe</button>
             <button class="tab" data-section="upcoming">Bevorstehend</button>
+            <button class="tab" data-section="items">Items</button>
           </nav>
           <div class="toolbar" id="toolbar">
             <button class="secondary" id="addPair" aria-label="Begegnung hinzufügen">＋</button>
@@ -886,6 +954,12 @@
       const POKEMON_Y_MAX_ID = 721;
       // Pokémon X/Y kennt die Attacken bis Nummer 621.
       const POKEMON_Y_MAX_MOVE_ID = 621;
+      // Items bis Generation 6: Sprite-Name|deutscher Name
+      const KALOS_ITEMS = new Map("master-ball|Meisterball;ultra-ball|Hyperball;great-ball|Superball;poke-ball|Pokéball;safari-ball|Safariball;net-ball|Netzball;dive-ball|Tauchball;nest-ball|Nestball;repeat-ball|Wiederball;timer-ball|Timerball;luxury-ball|Luxusball;premier-ball|Premierball;dusk-ball|Finsterball;heal-ball|Heilball;quick-ball|Flottball;cherish-ball|Jubelball;potion|Trank;antidote|Gegengift;burn-heal|Feuerheiler;ice-heal|Eisheiler;awakening|Aufwecker;paralyze-heal|Para-Heiler;full-restore|Top-Genesung;max-potion|Top-Trank;hyper-potion|Hypertrank;super-potion|Supertrank;full-heal|Hyperheiler;revive|Beleber;max-revive|Top-Beleber;fresh-water|Tafelwasser;soda-pop|Sprudel;lemonade|Limonade;moomoo-milk|Kuhmuh-Milch;energy-powder|Energiestaub;energy-root|Kraftwurzel;heal-powder|Heilpuder;revival-herb|Vitalkraut;ether|Äther;max-ether|Top-Äther;elixir|Elixier;max-elixir|Top-Elixier;lava-cookie|Lavakeks;berry-juice|Beerensaft;sacred-ash|Zauberasche;hp-up|KP-Plus;protein|Protein;iron|Eisen;carbos|Carbon;calcium|Kalzium;rare-candy|Sonderbonbon;pp-up|AP-Plus;zinc|Zink;pp-max|AP-Top;old-gateau|Spezialität;guard-spec|Megablock;dire-hit|X-Volltreffer;x-attack|X-Angriff;x-defense|X-Verteidigung;x-speed|X-Initiative;x-accuracy|X-Genauigkeit;x-sp-atk|X-Sp.-Ang.;x-sp-def|X-Sp.-Vert.;poke-doll|Poképuppe;fluffy-tail|Eneco-Rute;blue-flute|Blaue Flöte;yellow-flute|Gelbe Flöte;red-flute|Rote Flöte;black-flute|Schwarze Flöte;white-flute|Weiße Flöte;shoal-salt|Küstensalz;shoal-shell|Küstenschale;red-shard|Purpurstück;blue-shard|Indigostück;yellow-shard|Gelbstück;green-shard|Grünstück;super-repel|Superschutz;max-repel|Top-Schutz;escape-rope|Fluchtseil;repel|Schutz;sun-stone|Sonnenstein;moon-stone|Mondstein;fire-stone|Feuerstein;thunder-stone|Donnerstein;water-stone|Wasserstein;leaf-stone|Blattstein;tiny-mushroom|Minipilz;big-mushroom|Riesenpilz;pearl|Perle;big-pearl|Riesenperle;stardust|Sternenstaub;star-piece|Sternenstück;nugget|Nugget;heart-scale|Herzschuppe;honey|Honig;growth-mulch|Wachsmulch;damp-mulch|Feuchtmulch;stable-mulch|Stabilmulch;gooey-mulch|Neumulch;root-fossil|Wurzelfossil;claw-fossil|Klauenfossil;helix-fossil|Helixfossil;dome-fossil|Domfossil;old-amber|Altbernstein;armor-fossil|Panzerfossil;skull-fossil|Kopffossil;rare-bone|Steinknochen;shiny-stone|Leuchtstein;dusk-stone|Finsterstein;dawn-stone|Funkelstein;oval-stone|Ovaler Stein;odd-keystone|Spiritkern;adamant-orb|Adamant-Orb;lustrous-orb|Weiß-Orb;grass-mail|Wiesenbrief;flame-mail|Feuerbrief;bubble-mail|Wasserbrief;bloom-mail|Blütenbrief;tunnel-mail|Minenbrief;steel-mail|Stahlbrief;heart-mail|Rosabrief;snow-mail|Schneebrief;space-mail|Sternbrief;air-mail|Luftbrief;mosaic-mail|Mosaikbrief;brick-mail|Ziegelbrief;cheri-berry|Amrenabeere;chesto-berry|Maronbeere;pecha-berry|Pirsifbeere;rawst-berry|Fragiabeere;aspear-berry|Wilbirbeere;leppa-berry|Jonagobeere;oran-berry|Sinelbeere;persim-berry|Persimbeere;lum-berry|Prunusbeere;sitrus-berry|Tsitrubeere;figy-berry|Giefebeere;wiki-berry|Wikibeere;mago-berry|Magobeere;aguav-berry|Gauvebeere;iapapa-berry|Yapabeere;razz-berry|Himmihbeere;bluk-berry|Morbbeere;nanab-berry|Nanabbeere;wepear-berry|Nirbebeere;pinap-berry|Sananabeere;pomeg-berry|Granabeere;kelpsy-berry|Setangbeere;qualot-berry|Qualotbeere;hondew-berry|Honmelbeere;grepa-berry|Labrusbeere;tamato-berry|Tamotbeere;cornn-berry|Saimbeere;magost-berry|Magostbeere;rabuta-berry|Rabutabeere;nomel-berry|Tronzibeere;spelon-berry|Kiwanbeere;pamtre-berry|Pallmbeere;watmel-berry|Wasmelbeere;durin-berry|Durinbeere;belue-berry|Myrtilbeere;occa-berry|Koakobeere;passho-berry|Foepasbeere;wacan-berry|Kerzalbeere;rindo-berry|Grindobeere;yache-berry|Kiroyabeere;chople-berry|Rospelbeere;kebia-berry|Grarzbeere;shuca-berry|Schukebeere;coba-berry|Kobabeere;payapa-berry|Pyapabeere;tanga-berry|Tanigabeere;charti-berry|Chiaribeere;kasib-berry|Zitarzbeere;haban-berry|Terirobeere;colbur-berry|Burleobeere;babiri-berry|Babiribeere;chilan-berry|Latchibeere;liechi-berry|Lydzibeere;ganlon-berry|Linganbeere;salac-berry|Salkabeere;petaya-berry|Tahaybeere;apicot-berry|Apikobeere;lansat-berry|Lansatbeere;starf-berry|Krambobeere;enigma-berry|Enigmabeere;micle-berry|Wunfrubeere;custap-berry|Eipfelbeere;jaboca-berry|Jabocabeere;rowap-berry|Roselbeere;bright-powder|Blendpuder;white-herb|Schlohkraut;macho-brace|Machoschiene;exp-share|EP-Teiler;quick-claw|Flinkklaue;soothe-bell|Sanftglocke;mental-herb|Mentalkraut;choice-band|Wahlband;kings-rock|King-Stein;silver-powder|Silberstaub;amulet-coin|Münzamulett;cleanse-tag|Schutzsticker;soul-dew|Seelentau;deep-sea-tooth|Abysszahn;deep-sea-scale|Abyssschuppe;smoke-ball|Rauchball;everstone|Ewigstein;focus-band|Fokusband;lucky-egg|Glücks-Ei;scope-lens|Scope-Linse;metal-coat|Metallmantel;leftovers|Überreste;dragon-scale|Drachenschuppe;light-ball|Kugelblitz;soft-sand|Pudersand;hard-stone|Granitstein;miracle-seed|Wundersaat;black-glasses|Schattenbrille;black-belt|Schwarzgurt;magnet|Magnet;mystic-water|Zauberwasser;sharp-beak|Spitzer Schnabel;poison-barb|Giftstich;never-melt-ice|Ewiges Eis;spell-tag|Bannsticker;twisted-spoon|Krummlöffel;charcoal|Holzkohle;dragon-fang|Drachenzahn;silk-scarf|Seidenschal;up-grade|Upgrade;shell-bell|Muschelglocke;sea-incense|Seerauch;lax-incense|Laxrauch;lucky-punch|Lucky Punch;metal-powder|Metallstaub;thick-club|Kampfknochen;stick|Lauchstange;red-scarf|Roter Schal;blue-scarf|Blauer Schal;pink-scarf|Rosa Schal;green-scarf|Grüner Schal;yellow-scarf|Gelber Schal;wide-lens|Großlinse;muscle-band|Muskelband;wise-glasses|Schlaubrille;expert-belt|Expertengurt;light-clay|Lichtlehm;life-orb|Leben-Orb;power-herb|Energiekraut;toxic-orb|Toxik-Orb;flame-orb|Heiß-Orb;quick-powder|Flottstaub;focus-sash|Fokusgurt;zoom-lens|Zoomlinse;metronome|Metronom;iron-ball|Eisenkugel;lagging-tail|Schwerschweif;destiny-knot|Fatumknoten;black-sludge|Giftschleim;icy-rock|Eisbrocken;smooth-rock|Glattbrocken;heat-rock|Heißbrocken;damp-rock|Nassbrocken;grip-claw|Griffklaue;choice-scarf|Wahlschal;sticky-barb|Klettdorn;power-bracer|Machtreif;power-belt|Machtgurt;power-lens|Machtlinse;power-band|Machtband;power-anklet|Machtkette;power-weight|Machtgewicht;shed-shell|Wechselhülle;big-root|Großwurzel;choice-specs|Wahlbrille;flame-plate|Feuertafel;splash-plate|Wassertafel;zap-plate|Blitztafel;meadow-plate|Wiesentafel;icicle-plate|Frosttafel;fist-plate|Fausttafel;toxic-plate|Gifttafel;earth-plate|Erdtafel;sky-plate|Wolkentafel;mind-plate|Hirntafel;insect-plate|Käfertafel;stone-plate|Steintafel;spooky-plate|Spuktafel;draco-plate|Dracotafel;dread-plate|Furchttafel;iron-plate|Eisentafel;odd-incense|Schrägrauch;rock-incense|Steinrauch;full-incense|Lahmrauch;wave-incense|Wellenrauch;rose-incense|Rosenrauch;luck-incense|Glücksrauch;pure-incense|Scheuchrauch;protector|Schützer;electirizer|Stromisierer;magmarizer|Magmaisierer;dubious-disc|Dubiosdisc;reaper-cloth|Düsterumhang;razor-claw|Scharfklaue;razor-fang|Scharfzahn;explorer-kit|Erkundungs-Set;loot-sack|Beutesack;rule-book|Regelbuch;poke-radar|Pokéradar;point-card|Punktekarte;journal|Tagebuch;seal-case|Stickerkoffer;fashion-case|Modekoffer;seal-bag|Stickertüte;pal-pad|Adressbuch;works-key|K-Schlüssel;old-charm|Talisman;galactic-key|G-Schlüssel;red-chain|Rote Kette;town-map|Karte;vs-seeker|Kampffahnder;coin-case|Münzkorb;old-rod|Angel;good-rod|Profiangel;super-rod|Superangel;sprayduck|Enton-Kanne;poffin-case|Knurspbox;bicycle|Fahrrad;suite-key|Hotelschlüssel;oaks-letter|Eichs Brief;lunar-wing|Lunarfeder;member-card|Mitgliedskarte;azure-flute|Azurflöte;ss-ticket|Bootsticket;contest-pass|Wettbewerbskarte;magma-stone|Magmastein;parcel|Paket;coupon-1|Coupon 1;coupon-2|Coupon 2;coupon-3|Coupon 3;storage-key|Lagerschlüssel;secret-potion|Geheimtrank;griseous-orb|Platinum-Orb;vs-recorder|Kampfkamera;gracidea|Gracidea;secret-key|Geheimschlüssel;apricorn-box|Aprikokobox;berry-pots|Pflanzset;squirt-bottle|Schiggykanne;lure-ball|Köderball;level-ball|Levelball;moon-ball|Mondball;heavy-ball|Schwerball;fast-ball|Turboball;friend-ball|Freundesball;love-ball|Sympaball;park-ball|Parkball;sport-ball|Turnierball;red-apricorn|Aprikoko Rot;blue-apricorn|Aprikoko Blau;yellow-apricorn|Aprikoko Gelb;green-apricorn|Aprikoko Grün;pink-apricorn|Aprikoko Pink;white-apricorn|Aprikoko Weiß;black-apricorn|Aprikoko Schwarz;dowsing-machine|Itemradar;rage-candy-bar|Wutkeks;red-orb|Roter Edelstein;blue-orb|Blauer Edelstein;jade-orb|Grüne Kugel;enigma-stone|Mytokristall;unown-report|Icognitoheft;blue-card|Blaue Karte;slowpoke-tail|Flegmon-Rute;clear-bell|Klarglocke;card-key|Schlüsselkarte;basement-key|Kelleröffner;red-scale|Rote Schuppe;lost-item|Fundsache;pass|Fahrschein;machine-part|Spule;silver-wing|Silberflügel;rainbow-wing|Buntschwinge;mystery-egg|Rätsel-Ei;gb-sounds|GB-Player;tidal-bell|Gischtglocke;data-card-01|Datenkarte01;data-card-02|Datenkarte02;data-card-03|Datenkarte03;data-card-04|Datenkarte04;data-card-05|Datenkarte05;data-card-06|Datenkarte06;data-card-07|Datenkarte07;data-card-08|Datenkarte08;data-card-09|Datenkarte09;data-card-10|Datenkarte10;data-card-11|Datenkarte11;data-card-12|Datenkarte12;data-card-13|Datenkarte13;data-card-14|Datenkarte14;data-card-15|Datenkarte15;data-card-16|Datenkarte16;data-card-17|Datenkarte17;data-card-18|Datenkarte18;data-card-19|Datenkarte19;data-card-20|Datenkarte20;data-card-21|Datenkarte21;data-card-22|Datenkarte22;data-card-23|Datenkarte23;data-card-24|Datenkarte24;data-card-25|Datenkarte25;data-card-26|Datenkarte26;data-card-27|Datenkarte27;lock-capsule|Tresorkapsel;photo-album|Fotoalbum;orange-mail|Zigzagbrief;harbor-mail|Hafenbrief;glitter-mail|Glitzerbrief;mech-mail|Eilbrief;wood-mail|Waldbrief;wave-mail|Wellenbrief;bead-mail|Perlenbrief;shadow-mail|Dunkelbrief;tropic-mail|Tropenbrief;dream-mail|Traumbrief;fab-mail|Edelbrief;retro-mail|Retrobrief;mach-bike|Eilrad;acro-bike|Kunstrad;wailmer-pail|Wailmerkanne;devon-goods|Devon-Waren;soot-sack|Aschetasche;pokeblock-case|Pokériegelbox;letter|Brief an Troy;eon-ticket|Äon-Ticket;scanner|Scanner;go-goggles|Wüstenbrille;meteorite|Meteorit;rm-1-key|K1-Schlüssel;rm-2-key|K2-Schlüssel;rm-4-key|K4-Schlüssel;rm-6-key|K6-Schlüssel;devon-scope|Devon-Scope;oaks-parcel|Eichs Paket;poke-flute|Pokéflöte;bike-voucher|Rad-Coupon;gold-teeth|Goldenes Gebiss;lift-key|Aufzugsschlüssel;silph-scope|Silph Scope;fame-checker|Ruhmesdatei;berry-pouch|Beerentüte;teachy-tv|Lehrkanal;tri-pass|Tri-Pass;rainbow-pass|Bunt-Pass;tea|Tee;mysticticket|Geheimticket;auroraticket|Auroraticket;powder-jar|Puderdöschen;ruby|Rubin;sapphire|Saphir;magma-emblem|Magmaemblem;old-sea-map|Alte Karte;douse-drive|Aquamodul;shock-drive|Blitzmodul;burn-drive|Flammenmodul;chill-drive|Gefriermodul;sweet-heart|Herzkonfekt;greet-mail|Grußbrief;favored-mail|Faiblebrief;rsvp-mail|Einladebrief;thanks-mail|Dankesbrief;inquiry-mail|Fragebrief;like-mail|Insiderbrief;reply-mail|Rückbrief;bridge-mail-s|Brückbrief H;bridge-mail-d|Brückbrief M;bridge-mail-t|Brückbrief Z;bridge-mail-v|Brückbrief D;bridge-mail-m|Brückbrief W;prism-scale|Schönschuppe;eviolite|Evolith;float-stone|Leichtstein;rocky-helmet|Beulenhelm;air-balloon|Luftballon;red-card|Rote Karte;ring-target|Zielscheibe;binding-band|Klammerband;absorb-bulb|Knolle;cell-battery|Akku;eject-button|Fluchtknopf;fire-gem|Feuerjuwel;water-gem|Wasserjuwel;electric-gem|Elektrojuwel;grass-gem|Pflanzenjuwel;ice-gem|Eisjuwel;fighting-gem|Kampfjuwel;poison-gem|Giftjuwel;ground-gem|Bodenjuwel;flying-gem|Flugjuwel;psychic-gem|Psychojuwel;bug-gem|Käferjuwel;rock-gem|Gesteinsjuwel;ghost-gem|Geisterjuwel;dark-gem|Unlichtjuwel;steel-gem|Stahljuwel;health-wing|Heilfeder;muscle-wing|Kraftfeder;resist-wing|Abwehrfeder;genius-wing|Geniefeder;clever-wing|Espritfeder;swift-wing|Flinkfeder;pretty-wing|Prachtfeder;cover-fossil|Schildfossil;plume-fossil|Federfossil;liberty-pass|Gartenpass;pass-orb|Transfer-Orb;dream-ball|Traumball;poke-toy|Pokéwedel;prop-case|Deko-Box;dragon-skull|Drakoschädel;balm-mushroom|Duftpilz;big-nugget|Riesennugget;pearl-string|Triperle;comet-shard|Kometstück;relic-copper|Alter Heller;relic-silver|Alter Taler;relic-gold|Alter Dukat;relic-vase|Alte Vase;relic-band|Alter Reif;relic-statue|Alte Statue;relic-crown|Alte Krone;casteliacone|Stratos-Eis;dire-hit-2|X-Volltreffer 2;x-speed-2|X-Initiative 2;x-sp-atk-2|X-Sp.-Ang. 2;x-sp-def-2|X-Sp.-Vert. 2;x-defense-2|X-Verteidigung 2;x-attack-2|X-Angriff 2;x-accuracy-2|X-Genauigkeit 2;x-speed-3|X-Initiative 3;x-sp-atk-3|X-Sp.-Ang. 3;x-sp-def-3|X-Sp.-Vert. 3;x-defense-3|X-Verteidigung 3;x-attack-3|X-Angriff 3;x-accuracy-3|X-Genauigkeit 3;x-speed-6|X-Initiative 6;x-sp-atk-6|X-Sp.-Ang. 6;x-sp-def-6|X-Sp.-Vert. 6;x-defense-6|X-Verteidigung 6;x-attack-6|X-Angriff 6;x-accuracy-6|X-Genauigkeit 6;ability-urge|Fähigkeiten-Appell;item-drop|Itemabwurf;item-urge|Itemappell;reset-urge|Umkehrappell;dire-hit-3|X-Volltreffer 3;light-stone|Lichtstein;dark-stone|Dunkelstein;xtransceiver|Viso-Caster;gram-1|Briefpost 1;gram-2|Briefpost 2;gram-3|Briefpost 3;dragon-gem|Drakojuwel;normal-gem|Normaljuwel;medal-box|Medaillenbox;dna-splicers|DNS-Keil;permit|Genehmigung;oval-charm|Ovalpin;shiny-charm|Schillerpin;plasma-card|Plasmakarte;grubby-hanky|Schnäuztuch;colress-machine|Achromat;reveal-glass|Wahrspiegel;weakness-policy|Schwächenschutz;assault-vest|Offensivweste;pixie-plate|Feentafel;ability-capsule|Fähigkeiten-Kapsel;whipped-dream|Sahnehäubchen;sachet|Duftbeutel;luminous-moss|Leuchtmoos;snowball|Schneeball;safety-goggles|Schutzbrille;rich-mulch|Sprießmulch;surprise-mulch|Wundermulch;boost-mulch|Wuchermulch;amaze-mulch|Ultramulch;gengarite|Gengarnit;gardevoirite|Guardevoirnit;ampharosite|Ampharosnit;venusaurite|Bisaflornit;charizardite-x|Gluraknit X;blastoisinite|Turtoknit;mewtwonite-x|Mewtunit X;mewtwonite-y|Mewtunit Y;blazikenite|Lohgocknit;medichamite|Meditalisnit;houndoominite|Hundemonit;aggronite|Stollossnit;banettite|Banetteonit;tyranitarite|Despotarnit;scizorite|Scheroxnit;pinsirite|Pinsirnit;aerodactylite|Aerodactylonit;lucarionite|Lucarionit;abomasite|Rexblisarnit;kangaskhanite|Kangamanit;gyaradosite|Garadosnit;absolite|Absolnit;charizardite-y|Gluraknit Y;alakazite|Simsalanit;heracronite|Skarabornit;mawilite|Flunkifernit;manectite|Voltensonit;garchompite|Knakracknit;roseli-berry|Hibisbeere;kee-berry|Akibeere;maranga-berry|Tarabeere;discount-coupon|Rabattmarke;strange-souvenir|Skurriloskulptur;lumiose-galette|Illumina-Galette;jaw-fossil|Kieferfossil;sail-fossil|Flossenfossil;fairy-gem|Feenjuwel;adventure-rules|Abenteuerfibel;elevator-key|Liftschlüssel;holo-caster|Holo-Log;honor-of-kalos|Kalos-Emblem;intriguing-stone|Kurioser Stein;lens-case|Linsenetui;looker-ticket|LeBelle-Ticket;mega-ring|Mega-Ring;power-plant-pass|Kraftwerks-Pass;profs-letter|Brief vom Prof;roller-skates|Rollerskates;sprinklotad|Loturzelkanne;latiasite|Latiasnit".split(";").map((entry) => {
+        const [identifier, name] = entry.split("|");
+        return [name.toLocaleLowerCase("de"), { identifier, name }];
+      }));
+      const ITEM_SPRITE_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items";
       const MOVE_NAMES_URL = "https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv/move_names.csv";
       const MOVE_NAMES_STORAGE_KEY = "soullink-move-names-v1";
       // Entwicklungen in Pokémon X/Y nach den Randomizer-Optionen "Change Impossible Evolutions", "Make Evolutions Easier" und "Remove Time-Based Evolutions": [Ziel-ID, Bedingung]
@@ -1086,7 +1160,8 @@
         boxTypeFilter: "",
         boxSort: "route",
         boxCompareOpen: false,
-        boxPowerOpen: false
+        boxPowerOpen: false,
+        items: []
       };
       let state = loadState();
       let toastTimer;
@@ -1237,11 +1312,35 @@
         };
       }
 
+      // Gemerkte Shop-Funde: [{ id, item, location, price, bought, createdAt }]
+      function normalizeItems(raw) {
+        if (!Array.isArray(raw)) return [];
+        const seen = new Set();
+        return raw.flatMap((entry) => {
+          const item = typeof entry?.item === "string" ? entry.item.trim().slice(0, 60) : "";
+          if (!item || typeof entry.id !== "string" || seen.has(entry.id)) return [];
+          seen.add(entry.id);
+          const price = Number(entry.price);
+          return [{
+            id: entry.id,
+            item,
+            location: typeof entry.location === "string" ? entry.location.trim().slice(0, 60) : "",
+            price: entry.price !== null && entry.price !== "" && Number.isFinite(price) && price >= 0 ? Math.min(9999999, Math.round(price)) : null,
+            // Abhaken gibt es nicht mehr: Gekauftes wird einfach gelöscht.
+            bought: false,
+            // 0 oder 1 = nur für diesen Spieler, null = für beide
+            player: entry.player === 0 || entry.player === 1 ? entry.player : null,
+            createdAt: Number(entry.createdAt) || 0
+          }];
+        });
+      }
+
       function normalizeState(value) {
         const next = structuredClone(initialState);
         next.players = value.players.slice();
         next.view = ["routes", "team", "grave"].includes(value.view) ? value.view : "routes";
-        next.section = ["nuzlocke", "map", "routes", "bosses", "upcoming"].includes(value.section) ? value.section : "nuzlocke";
+        next.section = ["nuzlocke", "map", "routes", "bosses", "upcoming", "items"].includes(value.section) ? value.section : "nuzlocke";
+        next.items = normalizeItems(value.items);
         next.currentLocation = typeof value.currentLocation === "string" ? value.currentLocation : "";
         next.randomizerMode = value.randomizerMode === true;
         next.boxScope = ["box", "team", "all"].includes(value.boxScope) ? value.boxScope : "box";
@@ -1328,7 +1427,8 @@
           players: source.players,
           pairs: source.pairs,
           currentLocation: source.currentLocation,
-          randomizerMode: source.randomizerMode === true
+          randomizerMode: source.randomizerMode === true,
+          items: source.items || []
         });
       }
 
@@ -1342,7 +1442,9 @@
           players: Array.isArray(raw?.players) ? raw.players : state.players,
           pairs: Array.isArray(raw?.pairs) ? raw.pairs : state.pairs,
           currentLocation: typeof raw?.currentLocation === "string" ? raw.currentLocation : "",
-          randomizerMode: raw?.randomizerMode === true
+          randomizerMode: raw?.randomizerMode === true,
+          // Ein Browser mit einer älteren Version der Seite schickt keine Items mit; dann bleiben die lokalen erhalten.
+          items: Array.isArray(raw?.items) ? raw.items : state.items
         };
         const normalized = normalizeState(candidate);
         return sharedSnapshot(normalized);
@@ -1354,6 +1456,7 @@
         state.pairs = shared.pairs;
         state.currentLocation = shared.currentLocation;
         state.randomizerMode = shared.randomizerMode;
+        state.items = shared.items;
         return shared;
       }
 
@@ -1433,7 +1536,25 @@
         const randomizerMode = local.randomizerMode !== base.randomizerMode
           ? local.randomizerMode
           : remote.randomizerMode;
-        return normalizeSharedSnapshot({ players, pairs: mergedPairs, currentLocation, randomizerMode });
+        const baseItems = new Map(base.items.map((entry) => [entry.id, entry]));
+        const localItems = new Map(local.items.map((entry) => [entry.id, entry]));
+        const remoteItemIds = new Set(remote.items.map((entry) => entry.id));
+        const items = [];
+        for (const remoteItem of remote.items) {
+          const localItem = localItems.get(remoteItem.id);
+          const baseItem = baseItems.get(remoteItem.id);
+          if (!localItem) {
+            if (!baseItem) items.push(remoteItem);
+            continue;
+          }
+          items.push(baseItem
+            ? Object.fromEntries(Object.keys(remoteItem).map((key) => [key, pickChangedValue(baseItem[key], remoteItem[key], localItem[key])]))
+            : localItem);
+        }
+        for (const localItem of local.items) {
+          if (!remoteItemIds.has(localItem.id) && !baseItems.has(localItem.id)) items.push(localItem);
+        }
+        return normalizeSharedSnapshot({ players, pairs: mergedPairs, currentLocation, randomizerMode, items });
       }
 
       async function writeSharedSnapshot(snapshot, expectedUpdatedAt) {
@@ -1914,8 +2035,8 @@
         document.querySelectorAll(".section-tabs .tab").forEach((tab) => tab.classList.toggle("active", tab.dataset.section === state.section));
         $("#sectionTabs").hidden = state.view !== "routes";
         $("#teamMiniTabs").hidden = state.view !== "routes";
-        $("#toolbar").hidden = state.view === "routes" && state.section === "map";
-        $("#playerHead").hidden = state.view !== "routes" || state.section === "map";
+        $("#toolbar").hidden = state.view === "routes" && ["map", "items"].includes(state.section);
+        $("#playerHead").hidden = state.view !== "routes" || ["map", "items"].includes(state.section);
         const currentPair = state.pairs.find((pair) => pair.category === "route" && pair.location === state.currentLocation);
         $("#continueButton").textContent = currentPair ? `Aktuell: ${displayLocation(currentPair.location)} →` : "Aktuellen Bereich wählen →";
         $("#search").placeholder = state.view === "team" ? "Box durchsuchen…" : state.view === "grave" ? "Friedhof durchsuchen…" : "Begegnungen suchen…";
@@ -2014,6 +2135,166 @@
         </svg>`;
       }
 
+      const mapPlaceName = (location, short) => location === "Starter*" ? "Aquarellia" : short;
+
+      function itemPlaces() {
+        return [...kalosMapNodes.filter((node) => !/^Route \d+$/.test(node[0])).map((node) => mapPlaceName(node[0], node[1])), ...kalosMapLandmarks.map((mark) => mark[0])]
+          .sort((a, b) => a.localeCompare(b, "de"));
+      }
+
+      function evolutionItemNames() {
+        return [...new Set(Object.values(KALOS_EVOLUTION_RULES).flat().map(([, text]) => evolutionItem(text)).filter(Boolean))].sort((a, b) => a.localeCompare(b, "de"));
+      }
+
+      // Kleines Item-Bild; unbekannte Items und fehlende Bilder zeigen ein neutrales Symbol.
+      function itemIcon(name, extraClass = "") {
+        const known = KALOS_ITEMS.get(String(name).trim().toLocaleLowerCase("de"));
+        return `<span class="item-icon${known ? "" : " none"}${extraClass ? ` ${extraClass}` : ""}" aria-hidden="true">${known ? `<img src="${ITEM_SPRITE_URL}/${known.identifier}.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('none');this.remove()">` : ""}</span>`;
+      }
+
+      function mapItemBadge(place) {
+        const found = state.items.filter((entry) => !entry.bought && sameItem(entry.location, place));
+        return found.length ? `<span class="map-item-badge" title="${escapeHTML(`Gemerkt: ${found.map((entry) => entry.item).join(", ")}`)}">${itemIcon(found[0].item)}${found.length > 1 ? `<b>${found.length}</b>` : ""}</span>` : "";
+      }
+
+      // Welche gefangenen Pokémon beider Spieler brauchen dieses Item für eine Entwicklung?
+      function itemNeeds(itemName, onlyPlayer = null) {
+        return state.pairs.flatMap((pair) => pair.category === "route" ? pair.mons.flatMap((mon, player) => mon.status === "caught" && (onlyPlayer === null || onlyPlayer === player)
+          ? getEvolutionRules(mon).filter((rule) => sameItem(evolutionItem(rule.text), itemName)).map((rule) => ({ mon, player, rule }))
+          : []) : []);
+      }
+
+      let itemSuggest = { inputId: "", options: [], active: -1 };
+      // Nur Ansicht dieses Browsers: für wen der nächste Eintrag gilt und welcher Filter aktiv ist.
+      let itemOwnerDraft = null;
+      let itemFilter = null;
+      const itemOwnerText = (player) => player === null ? "beide" : state.players[player];
+
+      function closeItemSuggest() {
+        document.querySelectorAll(".item-suggest").forEach((list) => { list.hidden = true; list.innerHTML = ""; });
+        document.querySelectorAll(".item-field input").forEach((input) => input.setAttribute("aria-expanded", "false"));
+        itemSuggest = { inputId: "", options: [], active: -1 };
+      }
+
+      function itemSuggestOptions(input) {
+        const query = input.value.trim().toLocaleLowerCase("de");
+        const mark = (name) => {
+          const at = query ? name.toLocaleLowerCase("de").indexOf(query) : -1;
+          return at < 0 ? escapeHTML(name) : `${escapeHTML(name.slice(0, at))}<b>${escapeHTML(name.slice(at, at + query.length))}</b>${escapeHTML(name.slice(at + query.length))}`;
+        };
+        const rank = (name) => name.toLocaleLowerCase("de").startsWith(query) ? 0 : 1;
+        if (input.id === "itemName") {
+          const evolutionNames = evolutionItemNames();
+          const pool = query ? [...new Set([...evolutionNames, ...[...KALOS_ITEMS.values()].map((item) => item.name)])].filter((name) => name.toLocaleLowerCase("de").includes(query)) : evolutionNames;
+          return pool.map((name) => ({ name, needs: itemNeeds(name) }))
+            .filter((option) => query || option.needs.length)
+            .sort((a, b) => Number(b.needs.length > 0) - Number(a.needs.length > 0) || rank(a.name) - rank(b.name) || a.name.localeCompare(b.name, "de"))
+            .slice(0, 8)
+            .map(({ name, needs }) => ({
+              value: name,
+              html: `${itemIcon(name)}<span class="item-suggest-name">${mark(name)}</span>${needs.length ? `<span class="item-suggest-extra" title="${escapeHTML(`Hilft ${needs.map(({ mon }) => getPokemonName(mon)).join(", ")}`)}">${needs.slice(0, 4).map(({ mon }) => `<img src="${spriteUrl(getPokemonId(mon))}" alt="">`).join("")}</span>` : ""}`
+            }));
+        }
+        const currentNode = kalosMapNodes.find((node) => node[0] === state.currentLocation);
+        const currentPlace = currentNode ? mapPlaceName(currentNode[0], currentNode[1]) : "";
+        return itemPlaces().filter((name) => !query || name.toLocaleLowerCase("de").includes(query))
+          .sort((a, b) => Number(b === currentPlace) - Number(a === currentPlace) || rank(a) - rank(b) || a.localeCompare(b, "de"))
+          .map((name) => {
+            const noted = state.items.filter((entry) => !entry.bought && sameItem(entry.location, name));
+            return {
+              value: name,
+              html: `<span class="item-suggest-pin" aria-hidden="true">◉</span><span class="item-suggest-name">${mark(name)}</span><span class="item-suggest-extra">${name === currentPlace ? `<em>aktuell</em>` : ""}${noted.slice(0, 3).map((entry) => itemIcon(entry.item)).join("")}</span>`
+            };
+          });
+      }
+
+      function showItemSuggest(input) {
+        const options = itemSuggestOptions(input);
+        const list = input.parentNode.querySelector(".item-suggest");
+        document.querySelectorAll(".item-suggest").forEach((other) => { if (other !== list) { other.hidden = true; other.innerHTML = ""; } });
+        // Steht schon genau ein Vorschlag im Feld, gibt es nichts mehr auszuwählen.
+        if (!options.length || (options.length === 1 && options[0].value === input.value.trim())) {
+          closeItemSuggest();
+          return;
+        }
+        itemSuggest = { inputId: input.id, options, active: input.value.trim() ? 0 : -1 };
+        list.innerHTML = options.map((option, index) => `<button type="button" class="item-suggest-option${index === itemSuggest.active ? " active" : ""}" role="option" tabindex="-1" data-suggest-index="${index}">${option.html}</button>`).join("");
+        list.hidden = false;
+        input.setAttribute("aria-expanded", "true");
+      }
+
+      function moveItemSuggest(step) {
+        const count = itemSuggest.options.length;
+        if (!count) return;
+        itemSuggest.active = (itemSuggest.active + step + count + (itemSuggest.active < 0 && step < 0 ? 1 : 0)) % count;
+        const buttons = document.querySelectorAll(`#${itemSuggest.inputId} ~ .item-suggest .item-suggest-option`);
+        buttons.forEach((button, index) => button.classList.toggle("active", index === itemSuggest.active));
+        buttons[itemSuggest.active]?.scrollIntoView?.({ block: "nearest" });
+      }
+
+      function chooseItemSuggest(index) {
+        const input = document.getElementById(itemSuggest.inputId);
+        const option = itemSuggest.options[index];
+        if (!input || !option) return;
+        input.value = option.value;
+        const next = input.id === "itemName" ? "itemPlace" : "itemPrice";
+        if (input.id === "itemName") $("#itemPreview").innerHTML = itemIcon(option.value, "large");
+        closeItemSuggest();
+        document.getElementById(next).focus();
+      }
+
+      function renderItems() {
+        const content = $("#content");
+        // Ein Sync-Update darf angefangene Eingaben nicht löschen.
+        const draft = ["itemName", "itemPlace", "itemPrice"].map((id) => [id, document.getElementById(id)?.value || "", document.activeElement?.id === id]);
+        const formatPrice = (price) => `${String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ".")} ₽`;
+        const byNewest = (a, b) => b.createdAt - a.createdAt;
+        const visible = state.items.filter((entry) => itemFilter === null || entry.player === null || entry.player === itemFilter);
+        const open = visible.filter((entry) => !entry.bought).sort(byNewest);
+        const bought = visible.filter((entry) => entry.bought).sort(byNewest);
+        const ownerButtons = (action, selected, allLabel) => [[null, allLabel], [0, state.players[0]], [1, state.players[1]]].map(([player, label]) =>
+          `<button type="button" class="type-check-mode${selected === player ? " active" : ""}" data-action="${action}" data-owner="${player ?? "both"}" aria-pressed="${selected === player}">${escapeHTML(label)}</button>`).join("");
+        const openTotal = open.reduce((sum, entry) => sum + (entry.price || 0), 0);
+        const card = (entry) => {
+          const needs = itemNeeds(entry.item, entry.player);
+          return `<article class="item-row item-card${entry.bought ? " bought" : ""}${needs.length && !entry.bought ? " needed" : ""}" data-item-id="${escapeHTML(entry.id)}">
+            <div class="item-card-head">
+              ${itemIcon(entry.item, "large")}
+              <div class="item-main"><strong>${escapeHTML(entry.item)}</strong>
+                <div class="item-tags"><span class="item-place">${escapeHTML(entry.location || "Ort unbekannt")}</span><button type="button" class="item-owner-tag${entry.player === null ? "" : ` player-${entry.player}`}" data-action="item-owner" data-item="${escapeHTML(entry.id)}" title="Klicken, um zu ändern, für wen der Eintrag ist">für ${escapeHTML(itemOwnerText(entry.player))}</button>${entry.price !== null ? `<span class="boss-cap has-cap item-price">${formatPrice(entry.price)}</span>` : ""}</div>
+              </div>
+              <button type="button" class="remove-mon" data-action="item-delete" data-item="${escapeHTML(entry.id)}" title="Gekauft oder nicht mehr nötig: von der Merkliste löschen" aria-label="${escapeHTML(`${entry.item} von der Merkliste löschen`)}">×</button>
+            </div>
+            ${needs.length ? `<div class="item-needs">${needs.map(({ mon, player, rule }) => `<div class="item-need" title="${escapeHTML(`${getPokemonName(mon)} (${state.players[player]}) entwickelt sich damit zu ${rule.name}`)}">
+              <img src="${spriteUrl(getPokemonId(mon))}" alt="" loading="lazy"><span class="item-need-arrow" aria-hidden="true">→</span><img src="${spriteUrl(rule.id)}" alt="" loading="lazy">
+              <div><strong>${escapeHTML(`${getPokemonName(mon)} → ${rule.name}`)}</strong><small>${escapeHTML(state.players[player])}</small></div>
+            </div>`).join("")}</div>` : ""}
+          </article>`;
+        };
+        content.className = "pairs";
+        content.innerHTML = `<section class="kalos-map item-notes">
+          <div class="kalos-map-head">
+            <div><h2>Item-Merkliste</h2><p>Im Shop gesehen, aber gerade kein Geld? Hier merken – ihr seht beide dieselbe Liste.</p></div>
+            ${state.items.length ? `<div class="map-legend item-summary"><span><strong>${open.length}</strong> gemerkt</span>${openTotal ? `<span><strong>${formatPrice(openTotal)}</strong> zusammen</span>` : ""}</div>` : ""}
+          </div>
+          <form class="item-form" id="itemForm" autocomplete="off">
+            <span id="itemPreview">${itemIcon(draft[0][1], "large")}</span>
+            <div class="item-field"><input id="itemName" maxlength="60" required placeholder="Item, z. B. Wasserstein" aria-label="Item" role="combobox" aria-autocomplete="list" aria-expanded="false"><div class="item-suggest" role="listbox" hidden></div></div>
+            <div class="item-field"><input id="itemPlace" maxlength="60" required placeholder="Ort, z. B. Illumina City" aria-label="Ort" role="combobox" aria-autocomplete="list" aria-expanded="false"><div class="item-suggest" role="listbox" hidden></div></div>
+            <input id="itemPrice" type="number" min="0" max="9999999" inputmode="numeric" placeholder="Preis ₽" aria-label="Preis (optional)">
+            <div class="item-owner-pick" role="group" aria-label="Für wen?"><span>Für</span>${ownerButtons("item-owner-draft", itemOwnerDraft, "Beide")}</div>
+            <button class="primary" type="submit">＋ Merken</button>
+          </form>
+          ${state.items.length ? `<div class="item-filter" role="group" aria-label="Liste filtern"><span>Anzeigen</span>${ownerButtons("item-filter", itemFilter, "Alle")}</div>` : ""}
+          ${open.length ? `<div class="item-list">${open.map(card).join("")}</div>` : `<div class="empty"><strong>${bought.length ? "Alles gekauft." : itemFilter === null ? "Noch nichts gemerkt." : `Nichts für ${escapeHTML(state.players[itemFilter])} gemerkt.`}</strong>Trage oben ein, was ihr in einem Shop gesehen habt.</div>`}
+        </section>`;
+        for (const [id, value, focused] of draft) {
+          const input = document.getElementById(id);
+          if (value) input.value = value;
+          if (focused) input.focus();
+        }
+      }
+
       function renderKalosMap() {
         const routePairs = new Map(state.pairs.filter((pair) => pair.category === "route").map((pair) => [pair.location, pair]));
         const current = state.currentLocation ? routePairs.get(state.currentLocation) : null;
@@ -2023,7 +2304,7 @@
             <div><h2>Kalos-Fortschritt</h2><p>${current ? `Aktueller Bereich: <strong>${escapeHTML(displayLocation(current.location))}</strong>` : "Klicke einen Ort an, um ihn als aktuellen Bereich zu markieren."}</p></div>
             <div class="map-legend" aria-label="Kartenlegende"><span><i class="map-dot"></i> Offen</span><span><i class="map-dot caught"></i> Gefangen</span><span><i class="map-dot partial"></i> Teilweise</span><span><i class="map-dot missed"></i> Verpasst</span><span><i class="map-dot lost"></i> Verloren</span><span><i class="map-dot current"></i> Aktuell</span></div>
           </div>
-          <div class="map-board-wrap"><div class="map-board" role="group" aria-label="Karte der Kalos-Region"><img class="map-background" src="${globalThis.KALOS_MAP_IMAGE || ""}" alt="Übersichtskarte der Kalos-Region mit Routen und Städten">${renderKalosMapLines(routePairs)}${kalosMapLandmarks.map(([name, x, y, labelSide, ring]) => `<span class="map-landmark" style="${mapPosition(x, y, ring)}"><span class="map-node-label side-${labelSide}">${escapeHTML(name)}</span></span>`).join("")}${kalosMapNodes.map(([location, short, mapX, mapY, labelSide = "b", ring = ""]) => {
+          <div class="map-board-wrap"><div class="map-board" role="group" aria-label="Karte der Kalos-Region"><img class="map-background" src="${globalThis.KALOS_MAP_IMAGE || ""}" alt="Übersichtskarte der Kalos-Region mit Routen und Städten">${renderKalosMapLines(routePairs)}${kalosMapLandmarks.map(([name, x, y, labelSide, ring]) => `<span class="map-landmark" style="${mapPosition(x, y, ring)}">${mapItemBadge(name)}<span class="map-node-label side-${labelSide}">${escapeHTML(name)}</span></span>`).join("")}${kalosMapNodes.map(([location, short, mapX, mapY, labelSide = "b", ring = ""]) => {
             const pair = routePairs.get(location);
             const status = mapStatus(pair);
             const isCurrent = state.currentLocation === location;
@@ -2031,7 +2312,7 @@
             const routeNumber = location.match(/^Route (\d+)$/)?.[1] || "";
             const x = mapX / KALOS_MAP_WIDTH * 100;
             const tipSide = x > 82 ? " tip-end" : x < 14 ? " tip-start" : "";
-            return `<button type="button" class="map-node ${status}${isCurrent ? " current" : ""}${routeNumber ? " route" : " place"}${tipSide}" style="${mapPosition(mapX, mapY, ring)}" data-action="set-current" data-location="${escapeHTML(location)}" aria-label="${escapeHTML(`${label}: ${mapStatusText(status)}${isCurrent ? ", aktuell" : ""}`)}"><i class="map-node-dot" aria-hidden="true">${routeNumber}</i>${routeNumber ? "" : `<span class="map-node-label side-${labelSide}">${escapeHTML(short)}</span>`}<span class="map-tooltip" aria-hidden="true">${escapeHTML(`${label}: ${mapStatusText(status)}`)}</span></button>`;
+            return `<button type="button" class="map-node ${status}${isCurrent ? " current" : ""}${routeNumber ? " route" : " place"}${tipSide}" style="${mapPosition(mapX, mapY, ring)}" data-action="set-current" data-location="${escapeHTML(location)}" aria-label="${escapeHTML(`${label}: ${mapStatusText(status)}${isCurrent ? ", aktuell" : ""}`)}"><i class="map-node-dot" aria-hidden="true">${routeNumber}</i>${routeNumber ? "" : `<span class="map-node-label side-${labelSide}">${escapeHTML(short)}</span>`}${routeNumber ? "" : mapItemBadge(mapPlaceName(location, short))}<span class="map-tooltip" aria-hidden="true">${escapeHTML(`${label}: ${mapStatusText(status)}`)}</span></button>`;
           }).join("")}</div></div>
         </section>`;
       }
@@ -2141,6 +2422,10 @@
         }
         if (state.view === "routes" && state.section === "map") {
           renderKalosMap();
+          return;
+        }
+        if (state.view === "routes" && state.section === "items") {
+          renderItems();
           return;
         }
         const search = $("#search").value.trim().toLocaleLowerCase("de");
@@ -2430,9 +2715,22 @@
         return (KALOS_EVOLUTION_RULES[getPokemonId(mon)] || []).map(([id, text]) => ({ id, text, level: Number(text.match(/^Lv\. (\d+)/)?.[1]) || null, name: pokemonById.get(id)?.name || `#${id}` }));
       }
 
+      // Item, das eine Entwicklungsbedingung verlangt (Stein oder getragenes Item), sonst "".
+      function evolutionItem(text) {
+        const held = text.match(/^Level-Up mit (.+)$/);
+        if (held) return held[1];
+        return /^(Lv\.|Level-Up)/.test(text) ? "" : text.split(" · ")[0];
+      }
+
+      const sameItem = (a, b) => a.trim().toLocaleLowerCase("de") === b.trim().toLocaleLowerCase("de");
+
       function evolutionHint(mon) {
         const rules = getEvolutionRules(mon);
         if (!rules.length) return null;
+        const monPlayer = state.pairs.find((pair) => pair.mons.includes(mon))?.mons.indexOf(mon) ?? -1;
+        const noted = state.items.filter((entry) => !entry.bought && (entry.player === null || monPlayer < 0 || entry.player === monPlayer)
+          && rules.some((rule) => sameItem(evolutionItem(rule.text), entry.item)));
+        const shops = [...new Set(noted.map((entry) => `${entry.item} in ${entry.location || "einem Shop"}`))].join(", ");
         const sameCondition = rules.every((rule) => rule.text === rules[0].text);
         const cap = nextCap()?.levelCap;
         const later = Boolean(cap) && rules.every((rule) => rule.level > cap);
@@ -2440,7 +2738,9 @@
           text: sameCondition ? rules[0].text : `${rules.length} Wege`,
           target: rules.length === 1 ? rules[0].name : "",
           later,
-          title: `${rules.map((rule) => `${rule.name}: ${rule.text}`).join(" · ")}${later ? ` · über der aktuellen Levelgrenze (Lv. ${cap})` : ""}`
+          shops,
+          shopItem: noted[0]?.item || "",
+          title: `${rules.map((rule) => `${rule.name}: ${rule.text}`).join(" · ")}${later ? ` · über der aktuellen Levelgrenze (Lv. ${cap})` : ""}${shops ? ` · gesehen: ${shops}` : ""}`
         };
       }
 
@@ -2448,7 +2748,7 @@
         if (!hint) return `<span>${escapeHTML(name)}</span>`;
         // Bei langen Bedingungen ist die Bedingung wichtiger als der Name der Entwicklung.
         const text = hint.target && hint.text.length <= 12 ? `${hint.target} · ${hint.text}` : hint.text;
-        return `<span class="species-text"><span>${escapeHTML(name)}</span><small class="species-evo${hint.later ? " evo-later" : ""}" title="${escapeHTML(hint.title)}">→ ${escapeHTML(text)}</small></span>`;
+        return `<span class="species-text"><span>${escapeHTML(name)}</span><small class="species-evo${hint.later ? " evo-later" : ""}" title="${escapeHTML(hint.title)}">→ ${hint.shops ? itemIcon(hint.shopItem, "inline") : ""}${escapeHTML(text)}</small></span>`;
       }
 
       // Eine Zelle pro Team-Platz, damit jede Bedingung direkt unter ihrem Pokémon steht.
@@ -3032,7 +3332,7 @@
             const value = stats[key] || 0;
             return `<div class="box-stat-row"><span>${label}</span><div class="box-stat-track"><i style="width:${Math.min(100, value / 255 * 100)}%"></i></div><strong>${value}</strong></div>`;
           }).join("")}</div>` : `<div class="box-stat-list">Basiswerte werden geladen…</div>`}
-          ${hint ? `<div class="box-evo-hint" title="${escapeHTML(hint.title)}">Entwicklung: ${hint.target ? `${escapeHTML(hint.target)} · ` : ""}<strong${hint.later ? ` class="evo-later"` : ""}>${escapeHTML(hint.text)}</strong></div>` : ""}
+          ${hint ? `<div class="box-evo-hint" title="${escapeHTML(hint.title)}">Entwicklung: ${hint.target ? `${escapeHTML(hint.target)} · ` : ""}<strong${hint.later ? ` class="evo-later"` : ""}>${escapeHTML(hint.text)}</strong>${hint.shops ? `<span class="evo-shop">${itemIcon(hint.shopItem, "inline")}gesehen: ${escapeHTML(hint.shops)}</span>` : ""}</div>` : ""}
           <div class="box-pokemon-origin"><span>${escapeHTML(displayLocation(pair.location))}${partner.species ? ` · ↔ ${escapeHTML(getPokemonName(partner))}` : ""}</span>
             <div class="box-pokemon-actions">
               ${canEvolve(mon) ? `<button type="button" class="box-evolve" data-action="evolve" data-id="${escapeHTML(pair.id)}" data-index="${player}" title="${escapeHTML(name)} entwickeln">Entwickeln</button>` : ""}
@@ -3611,6 +3911,37 @@
           renderBox();
           return;
         }
+        if (button.dataset.action === "item-owner-draft" || button.dataset.action === "item-filter") {
+          const player = button.dataset.owner === "both" ? null : Number(button.dataset.owner);
+          if (button.dataset.action === "item-filter") itemFilter = player;
+          else itemOwnerDraft = player;
+          renderPairs();
+          return;
+        }
+        if (button.dataset.action === "item-owner") {
+          const entry = state.items.find((item) => item.id === button.dataset.item);
+          if (!entry) return;
+          // beide → Spieler 1 → Spieler 2 → beide
+          entry.player = entry.player === null ? 0 : entry.player === 0 ? 1 : null;
+          persist();
+          render();
+          showToast(`${entry.item} gilt jetzt für ${itemOwnerText(entry.player)}.`);
+          return;
+        }
+        if (button.dataset.action === "item-bought" || button.dataset.action === "item-delete") {
+          const entry = state.items.find((item) => item.id === button.dataset.item);
+          if (!entry) return;
+          if (button.dataset.action === "item-bought") {
+            entry.bought = !entry.bought;
+            showToast(entry.bought ? `${entry.item} als gekauft markiert.` : `${entry.item} steht wieder auf der Merkliste.`);
+          } else {
+            state.items = state.items.filter((item) => item.id !== entry.id);
+            showToast(`${entry.item} von der Merkliste gelöscht.`);
+          }
+          persist();
+          render();
+          return;
+        }
         if (button.dataset.action === "set-current") {
           const target = button.dataset.location
             ? state.pairs.find((item) => item.category === "route" && item.location === button.dataset.location)
@@ -3708,6 +4039,56 @@
         }
         persist();
         render();
+      });
+
+      const itemSuggestInput = (target) => target?.matches?.(".item-field input") ? target : null;
+      document.querySelector(".pairs").addEventListener("input", (event) => {
+        if (event.target.id === "itemName") $("#itemPreview").innerHTML = itemIcon(event.target.value, "large");
+        if (itemSuggestInput(event.target)) showItemSuggest(event.target);
+      });
+      document.querySelector(".pairs").addEventListener("focusin", (event) => {
+        if (itemSuggestInput(event.target)) showItemSuggest(event.target);
+      });
+      document.querySelector(".pairs").addEventListener("focusout", (event) => {
+        if (itemSuggestInput(event.target) && !event.relatedTarget?.closest?.(".item-suggest")) closeItemSuggest();
+      });
+      // mousedown statt click: so bleibt der Fokus im Feld und die Liste schließt nicht vorher.
+      document.querySelector(".pairs").addEventListener("mousedown", (event) => {
+        const option = event.target.closest?.(".item-suggest-option");
+        if (!option) return;
+        event.preventDefault();
+        chooseItemSuggest(Number(option.dataset.suggestIndex));
+      });
+      document.querySelector(".pairs").addEventListener("keydown", (event) => {
+        if (!itemSuggestInput(event.target)) return;
+        if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+          event.preventDefault();
+          if (itemSuggest.inputId !== event.target.id) showItemSuggest(event.target);
+          else moveItemSuggest(event.key === "ArrowDown" ? 1 : -1);
+        } else if (event.key === "Enter" && itemSuggest.inputId === event.target.id && itemSuggest.active >= 0) {
+          event.preventDefault();
+          chooseItemSuggest(itemSuggest.active);
+        } else if (event.key === "Escape" && itemSuggest.inputId) {
+          event.preventDefault();
+          event.stopPropagation();
+          closeItemSuggest();
+        }
+      });
+      document.querySelector(".pairs").addEventListener("submit", (event) => {
+        if (event.target.id !== "itemForm") return;
+        event.preventDefault();
+        const item = $("#itemName").value.trim();
+        const location = $("#itemPlace").value.trim();
+        if (!item || !location) return;
+        const price = $("#itemPrice").value.trim();
+        closeItemSuggest();
+        state.items = normalizeItems([...state.items, { id: makeId(), item, location, price: price === "" ? null : Number(price), bought: false, player: itemOwnerDraft, createdAt: Date.now() }]);
+        ["itemName", "itemPlace", "itemPrice"].forEach((id) => { document.getElementById(id).value = ""; });
+        persist();
+        render();
+        $("#itemName").focus();
+        const needs = itemNeeds(item, itemOwnerDraft);
+        showToast(needs.length ? `${item} gemerkt – hilft ${needs.length === 1 ? getPokemonName(needs[0].mon) : `${needs.length} eurer Pokémon`}.` : `${item} gemerkt.`);
       });
 
       document.querySelector(".pairs").addEventListener("change", async (event) => {
